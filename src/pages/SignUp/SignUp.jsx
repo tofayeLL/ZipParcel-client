@@ -3,9 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useState } from "react";
 
 
 const SignUp = () => {
+    const [showPass, setShowPass] = useState(false);
     // const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
@@ -84,18 +87,29 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password"    {...register("password", {
-                                required: true,
-                                minLength: 6,
-                                maxLength: 20,
-                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                            <div className="relative">
 
 
-                            })} name="password" placeholder="password" className="input input-bordered" />
-                            {errors.password?.type === 'required' && <span className='text-red-400'>Password field is required</span>}
-                            {errors.password?.type === 'minLength' && <span className='text-red-400'>Password must be 6 characters</span>}
-                            {errors.password?.type === 'maxLength' && <span className='text-red-400'>Password must be less 20 characters</span>}
-                            {errors.password?.type === 'pattern' && <span className='text-red-400'>Password must have one uppercase and one lowercase and one number,  one special characters</span>}
+                                <input type={showPass ? 'text' : 'password'}    {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+
+
+                                })} name="password" placeholder="password" className="input input-bordered w-full" />
+
+                                {errors.password?.type === 'required' && <span className='text-red-400'>Password field is required</span>}
+                                {errors.password?.type === 'minLength' && <span className='text-red-400'>Password must be 6 characters</span>}
+                                {errors.password?.type === 'maxLength' && <span className='text-red-400'>Password must be less 20 characters</span>}
+                                {errors.password?.type === 'pattern' && <span className='text-red-400'>Password must have one uppercase and one lowercase and one number,  one special characters</span>}
+
+                                {/* eye icon or show password icon */}
+                                <span onClick={() => setShowPass(!showPass)} className="absolute top-3 right-3">{showPass ? <FiEyeOff className="text-xl" ></FiEyeOff> : <FiEye className="text-xl"></FiEye>}</span>
+
+
+
+                            </div>
 
 
                         </div>
