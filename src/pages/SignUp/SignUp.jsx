@@ -1,0 +1,127 @@
+import { useForm } from "react-hook-form"
+import { Link } from "react-router-dom";
+
+const SignUp = () => {
+
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data);
+        reset();
+    }
+
+
+
+    return (
+        <section>
+
+
+            <div className="flex flex-col items-center my-10">
+
+
+                <div className="card shrink-0 w-full max-w-lg py-6 shadow-2xl bg-base-100 ">
+                    <div className=" mx-auto text-orange-400">
+                        <h1 className="lg:text-4xl text-xl font-bold ">Create an account</h1>
+                    </div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text"   {...register("name", { required: true })} name="name" placeholder="Your Name" className="input input-bordered" />
+                            {errors.name && <span className='text-red-400'>Name field is required</span>}
+
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="text"   {...register("photoURL", { required: true })} name="photoURL" placeholder="photoURL" className="input input-bordered" />
+                            {errors.name && <span className='text-red-400'>photoURL field is required</span>}
+
+                        </div>
+
+
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input type="email"    {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+                            {errors.email && <span className='text-red-400'>Email field is required</span>}
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <input type="password"    {...register("password", {
+                                required: true,
+                                minLength: 6,
+                                maxLength: 20,
+                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+
+
+                            })} name="password" placeholder="password" className="input input-bordered" />
+                            {errors.password?.type === 'required' && <span className='text-red-400'>Password field is required</span>}
+                            {errors.password?.type === 'minLength' && <span className='text-red-400'>Password must be 6 characters</span>}
+                            {errors.password?.type === 'maxLength' && <span className='text-red-400'>Password must be less 20 characters</span>}
+                            {errors.password?.type === 'pattern' && <span className='text-red-400'>Password must have one uppercase and one lowercase and one number,  one special characters</span>}
+
+
+                        </div>
+
+                        {/* user type */}
+                        <div className="form-control" required>
+
+                            <label className="label">
+                                <span className="label-text lg:text-lg text-base font-semibold">UserType</span>
+                            </label>
+
+                            <select defaultValue={'default'} name="userType" {...register("userType", { required: true }) }
+                                className="select select-bordered w-full ">
+                                <option disabled value={'default'}>Choose a UserType</option>
+                                <option value="User">User</option>
+                                <option value="Admin">Admin</option>
+                                <option value="DeliveryMen">DeliveryMen</option>
+                               
+                            </select>
+                            
+
+                        </div>
+
+
+                        <div className="form-control mt-6">
+                            <input className="btn bg-orange-400" type="submit" value="Sign up" />
+
+                        </div>
+
+                        {/* social login */}
+
+
+                        <div className="text-center " >
+                            <p className="font-medium mt-6 lg:text-base text-sm mr-2">Do not have an account ?  Please <Link to={'/login'} className="btn-active text-orange-600 btn-link">Login</Link></p>
+                        </div>
+
+                    </form>
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+        </section>
+    );
+};
+
+export default SignUp;
