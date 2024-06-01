@@ -1,9 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../../public/logo8.png'
 import { IoMdNotificationsOutline } from "react-icons/io";
+import useAuth from "../../hooks/useAuth";
 
 
 const Navbar = () => {
+
+    const { user, logOutUser } = useAuth();
+
+
+
+
     const links = <>
         <li className="text-lg"><NavLink to={'/'}>Home</NavLink></li>
         <li className="text-lg"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
@@ -18,6 +25,27 @@ const Navbar = () => {
             </button>
         </li>
     </>
+
+
+
+
+const handleLogOutUser = (e) => {
+    e.preventDefault();
+    // logout user
+    logOutUser()
+        .then(
+            console.log('logout successfully')
+
+
+
+        )
+}
+
+
+
+
+
+
     return (
         <section >
 
@@ -27,7 +55,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black">
                             {
                                 links
                             }
@@ -44,12 +72,58 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <NavLink to={'/login'}> <button href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-                        <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
-                        <span className="relative px-2 py-2 transition-all ease-out  rounded-md group-hover:bg-opacity-0 duration-400">
-                            <span className="relative text-white">Log in</span>
-                        </span>
-                    </button></NavLink>
+
+
+                    {user ?
+                        <div className="flex  justify-center items-center gap-5  mr-4">
+
+                            <div className="dropdown dropdown-end  text-black">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-14 rounded-full ">
+                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL ||  'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} className=""/>
+                                    </div>
+                                </div>
+                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-0 z-[1] p-2 shadow bg-base-100 rounded-box  w-52">
+                                    <li>
+                                        <a >
+                                            {user?.displayName || 'Tofayel'}
+
+                                        </a>
+                                    </li>
+                                    <li><a>Dashboard</a></li>
+                                    <li><Link onClick={handleLogOutUser} ><button>Logout</button></Link></li>
+                                </ul>
+                            </div>
+
+
+
+                          {/*   <Link > <button href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+                                <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+                                <span className="relative px-2 py-2 transition-all ease-out  rounded-md group-hover:bg-opacity-0 duration-400">
+                                    <span className="relative text-white">Log out</span>
+                                </span>
+                            </button>
+                            </Link> */}
+
+                        </div>
+
+
+                        :
+
+
+
+
+
+                        <NavLink to={'/login'}> <button href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
+                            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
+                            <span className="relative px-2 py-2 transition-all ease-out  rounded-md group-hover:bg-opacity-0 duration-400">
+                                <span className="relative text-white">Log in</span>
+                            </span>
+                        </button></NavLink>
+
+                    }
+
+
 
 
 

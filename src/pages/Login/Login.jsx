@@ -1,12 +1,22 @@
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
+
+    const { signInUser } = useAuth();
+
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
 
     const handleLogin = (e) => {
@@ -15,6 +25,24 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        //sign in user
+        signInUser(email, password)
+
+            .then((result) => {
+                console.log(result.user);
+                toast.success("Login Successfully");
+                e.target.reset();
+                navigate(from, { replace: true });
+
+            })
+
+            .catch((error) => {
+                console.log(error.message);
+                toast.error(error.message.replace('auth/', 'userEmail or password-').replace('-credential', ''));
+            })
+
+        
     }
 
 
@@ -50,7 +78,7 @@ const Login = () => {
 
                             </div>
                         </div>
-                        
+
 
 
 

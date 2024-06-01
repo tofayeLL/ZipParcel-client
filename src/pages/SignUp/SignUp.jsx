@@ -1,7 +1,15 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SignUp = () => {
+    // const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
+
+    const { createUser, updateUserProfile } = useAuth();
 
 
     const {
@@ -13,9 +21,24 @@ const SignUp = () => {
 
     const onSubmit = (data) => {
         console.log(data);
-        reset();
-    }
+        console.log(data);
+        createUser(data.email, data.password)
+            .then((result) => {
+                console.log(result.user);
 
+                updateUserProfile(data.name, data.photoURL);
+                console.log('user profile update successfully');
+
+
+                toast.success("Sign up Successfully");
+                reset();
+                navigate('/login')
+
+            })
+            .catch((error) => {
+                console.log(error.message);
+            })
+    }
 
 
     return (
@@ -84,15 +107,15 @@ const SignUp = () => {
                                 <span className="label-text lg:text-lg text-base font-semibold">UserType</span>
                             </label>
 
-                            <select defaultValue={'default'} name="userType" {...register("userType", { required: true }) }
+                            <select defaultValue={'default'} name="userType" {...register("userType", { required: true })}
                                 className="select select-bordered w-full ">
                                 <option disabled value={'default'}>Choose a UserType</option>
                                 <option value="User">User</option>
                                 <option value="Admin">Admin</option>
                                 <option value="DeliveryMen">DeliveryMen</option>
-                               
+
                             </select>
-                            
+
 
                         </div>
 
