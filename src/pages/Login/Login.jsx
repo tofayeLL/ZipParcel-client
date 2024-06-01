@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { FaGoogle } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import GoogleLogin from "../../components/SocialLogin/GoogleLogin";
 
 
 
@@ -101,7 +101,8 @@ const Login = () => {
 
                     <div className="lg:w-[70%] w-full mx-auto" >
 
-                        <Link><button /* onClick={handleGoogleLogin} */ className="btn w-full bg-orange-400 text-white"><FaGoogle className="text-2xl" ></FaGoogle> <span className="text-lg">Login with Google</span></button></Link>
+                       {/*  <Link><button onClick={handleGoogleLogin} className="btn w-full bg-orange-400 text-white"><FaGoogle className="text-2xl" ></FaGoogle> <span className="text-lg">Login with Google</span></button></Link> */}
+                       <GoogleLogin></GoogleLogin>
 
                     </div>
 

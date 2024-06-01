@@ -1,6 +1,9 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+
+
 
 
 
@@ -8,6 +11,9 @@ export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 // console.log(auth);
+
+// google auth provide
+const provider = new GoogleAuthProvider();
 
 
 
@@ -17,28 +23,25 @@ const AuthProviders = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
 
-     // create  user
-     const createUser = (email, password) => {
+    // create  user
+    const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-      // signIn user
-      const signInUser = (email, password) => {
+    // signIn user
+    const signInUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
 
-      // logout user
-      const logOutUser = () => {
+    // logout user
+    const logOutUser = () => {
         return signOut(auth);
     }
 
 
-
-
-
-      // update user profile
-      const updateUserProfile = (name, photo) => {
+    // update user profile
+    const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo
@@ -47,6 +50,10 @@ const AuthProviders = ({ children }) => {
 
 
 
+     // Google
+     const googleSignIn = () => {
+        return signInWithPopup(auth, provider);
+    }
 
 
 
@@ -57,7 +64,8 @@ const AuthProviders = ({ children }) => {
         loading,
         signInUser,
         updateUserProfile,
-        logOutUser
+        logOutUser,
+        googleSignIn
     }
 
 
