@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../../public/logo8.png'
 import { IoMdNotificationsOutline } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Navbar = () => {
@@ -16,7 +18,7 @@ const Navbar = () => {
         <li className="text-lg"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
         <li className="text-lg"><NavLink to={'/order'}>Ordered</NavLink></li>
         <li className="text-lg"><NavLink to={'/secret'}>Secret</NavLink></li>
-       
+
         <li>
             <button className="btn btn-ghost btn-circle">
                 <div className="indicator">
@@ -30,17 +32,19 @@ const Navbar = () => {
 
 
 
-const handleLogOutUser = (e) => {
-    e.preventDefault();
-    // logout user
-    logOutUser()
-        .then(
-            console.log('logout successfully')
+    const handleLogOutUser = (e) => {
+        e.preventDefault();
+        // logout user
+        logOutUser()
+            .then(() => {
+                // console.log('logout successfully');
+                toast.success("Logout Successfully");
+            }).catch((error) => {
+                // console.log(error.message);
+                toast.error(error.message);
 
-
-
-        )
-}
+            });
+    }
 
 
 
@@ -81,7 +85,7 @@ const handleLogOutUser = (e) => {
                             <div className="dropdown dropdown-end  text-black">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-14 rounded-full ">
-                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL ||  'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} className=""/>
+                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} className="" />
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-0 z-[1] p-2 shadow bg-base-100 rounded-box  w-52">
