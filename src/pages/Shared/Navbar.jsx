@@ -16,6 +16,7 @@ const Navbar = () => {
         <li className="text-lg"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
         <li className="text-lg"><NavLink to={'/order'}>Ordered</NavLink></li>
         <li className="text-lg"><NavLink to={'/secret'}>Secret</NavLink></li>
+       
         <li>
             <button className="btn btn-ghost btn-circle">
                 <div className="indicator">

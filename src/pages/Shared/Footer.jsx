@@ -7,7 +7,7 @@ const Footer = () => {
             <div>
 
 
-                <h1>This is from navbar</h1>
+                <h1>This is from footer</h1>
             </div>
         </section>
     );

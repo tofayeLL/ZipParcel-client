@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
+import GoogleLogin from "../../components/SocialLogin/GoogleLogin";
 
 
 const SignUp = () => {
@@ -140,6 +141,9 @@ const SignUp = () => {
                         </div>
 
                         {/* social login */}
+                        <div>
+                            <GoogleLogin></GoogleLogin>
+                        </div>
 
 
                         <div className="text-center " >
