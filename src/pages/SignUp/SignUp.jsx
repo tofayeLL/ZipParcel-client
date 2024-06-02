@@ -6,11 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
 import GoogleLogin from "../../components/SocialLogin/GoogleLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const SignUp = () => {
     const [showPass, setShowPass] = useState(false);
-    // const axiosPublic = useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
     const { createUser, updateUserProfile } = useAuth();
@@ -31,16 +32,37 @@ const SignUp = () => {
                 console.log(result.user);
 
                 updateUserProfile(data.name, data.photoURL);
-                console.log('user profile update successfully');
+                // console.log('user profile update successfully');
+
+                // create user info save in database
+                const userInfo = {
+                    name: data.name,
+                    email: data.email,
+                    userType: data.userType
+                }
+
+                // console.log(userInfo);
 
 
-                toast.success("Sign up Successfully");
-                reset();
-                navigate('/login')
+                axiosPublic.post('/users', userInfo)
+                    .then(data => {
+                        console.log(data.data);
+
+
+                        if (data.data.insertedId) {
+                            console.log('user added database successfully');
+                            toast.success("Sign up Successfully");
+                            reset();
+                            navigate('/login')
+
+                        }
+                    })
+
 
             })
             .catch((error) => {
                 console.log(error.message);
+                toast.error(error.message.replace('auth/', ''));
             })
     }
 
