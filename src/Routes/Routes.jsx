@@ -9,6 +9,12 @@ import Dashboard from "../Layout/Dashboard";
 import BookParcel from "../pages/Dashboard/BookParcel/BookParcel";
 import MyParcels from "../pages/Dashboard/MyParcels/MyParcels";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
+import DeliveryList from "../pages/Dashboard/DeliveryMan/DeliveryList/DeliveryList";
+import MyReviews from "../pages/Dashboard/DeliveryMan/MyReviews/MyReviews";
+import AllParcels from "../pages/Dashboard/Admin/AllParcels/AllParcels";
+import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
+import AllDeliveryMen from "../pages/Dashboard/Admin/AllDeliveryMen/AllDeliveryMen";
+import Statistics from "../pages/Dashboard/Admin/Statistics/Statistics";
 
 
 
@@ -39,8 +45,28 @@ export const router = createBrowserRouter([
     // Dashboard routes
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
+            // Admin routes
+            {
+                path: 'allParcel',
+                element: <AllParcels></AllParcels>
+            },
+            {
+                path: 'allUsers',
+                element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'allDeliveryMen',
+                element: <AllDeliveryMen></AllDeliveryMen>
+            },
+            {
+                path: 'statistics',
+                element: <Statistics></Statistics>
+            },
+
+
+
             // normal user routes
             {
                 path: 'bookParcel',
@@ -54,6 +80,18 @@ export const router = createBrowserRouter([
                 path: 'myProfile',
                 element: <MyProfile></MyProfile>
             },
+
+
+            // deliverymen routes
+            {
+                path: 'deliveryList',
+                element: <DeliveryList></DeliveryList>
+            },
+            {
+                path: 'myReviews',
+                element: <MyReviews></MyReviews>
+            },
+
         ]
     }
 

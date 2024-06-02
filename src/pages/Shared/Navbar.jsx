@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Navbar = () => {
 
     const { user, logOutUser } = useAuth();
+   
 
 
 
@@ -95,7 +96,7 @@ const Navbar = () => {
 
                                         </a>
                                     </li>
-                                    <li><a>Dashboard</a></li>
+                                    <li><Link to={'/dashboard'}><button>Dashboard</button></Link></li>
                                     <li><Link onClick={handleLogOutUser} ><button>Logout</button></Link></li>
                                 </ul>
                             </div>
