@@ -3,11 +3,12 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 
 const GoogleLogin = () => {
-
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -19,9 +20,21 @@ const GoogleLogin = () => {
         googleSignIn()
             .then((result) => {
                 console.log(result.user);
-                console.log('login with google successfully');
-                toast.success("Login Successfully");
-                navigate(from, { replace: true });
+
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    userType: 'User'
+
+                }
+
+                axiosPublic.post('/users', userInfo)
+                    .then(data => {
+                        console.log(data.data);
+                        console.log('login with google successfully');
+                        toast.success("Login Successfully");
+                        navigate(from, { replace: true });
+                    })
 
             })
 
