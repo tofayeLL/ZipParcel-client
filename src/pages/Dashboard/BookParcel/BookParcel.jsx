@@ -1,12 +1,18 @@
 import { useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const BookParcel = () => {
-
     const [parcelWeight, setParcelWeight] = useState('');
     const [price, setPrice] = useState('');
 
-    const handleBook = (e) => {
+    const { user } = useAuth();
+
+    const axiosPublic = useAxiosPublic();
+
+    const handleBook = async (e) => {
         e.preventDefault();
         const form = e.target;
         const userName = form.userName.value;
@@ -26,12 +32,28 @@ const BookParcel = () => {
 
 
         const status = "pending";
+        const bookingDate = new Date();
         // console.log(status);
+        // console.log(bookingDate);
 
 
 
-        const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, deliveryDate, latitudes, longitude, price, receiverName, receiverPhone, status }
-        console.log(parcel);
+        const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, deliveryDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate }
+        // console.log(parcel);
+
+
+        const res = await axiosPublic.post('/bookedParcel', parcel);
+        console.log(res.data);
+        if (res.data.insertedId) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Book Parcel successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            })
+            form.reset();
+
+        }
 
     }
 
@@ -82,7 +104,7 @@ const BookParcel = () => {
                                     <label className="label">
                                         <span className="label-text lg:text-lg text-base font-semibold text">User Name</span>
                                     </label>
-                                    <input type="text" name="userName" placeholder="User Name" className="input input-bordered" required />
+                                    <input type="text" defaultValue={user?.displayName} name="userName" placeholder="User Name" className="input input-bordered" required />
                                 </div>
                                 {/* 2 */}
                                 <div className="form-control">
@@ -128,7 +150,7 @@ const BookParcel = () => {
                                     <label className="label">
                                         <span className="label-text lg:text-lg text-base font-semibold">User Email</span>
                                     </label>
-                                    <input type="text" name="userEmail" placeholder="UserEmail" className="input input-bordered" required />
+                                    <input type="text" defaultValue={user?.email} name="userEmail" placeholder="UserEmail" className="input input-bordered" required />
                                 </div>
                                 {/* 2*/}
                                 <div className="form-control">
