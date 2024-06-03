@@ -120,7 +120,7 @@ const BookParcel = () => {
                                     <label className="label">
                                         <span className="label-text lg:text-lg text-base font-semibold"> Parcel Weight (kg)</span>
                                     </label>
-                                    {/* <input type="number" name="parcelWeight" placeholder="Parcel Weight" className="input input-bordered" required /> */}
+                                   
                                     <input type="number" name="parcelWeight" value={parcelWeight} onChange={handleWeight} placeholder="Parcel Weight" className="input input-bordered" required />
                                 </div>
                                 {/* 3*/}
@@ -135,7 +135,7 @@ const BookParcel = () => {
                                     <label className="label">
                                         <span className="label-text lg:text-lg text-base font-semibold">Price (Tk)</span>
                                     </label>
-                                    {/*  <input type="text" name="price" placeholder="Price Kg" className="input input-bordered" required /> */}
+                                  
                                     <input type="text" name="price" value={price} placeholder="Price" className="input input-bordered" readOnly />
                                 </div>
 

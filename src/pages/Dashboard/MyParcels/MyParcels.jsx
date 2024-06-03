@@ -3,9 +3,12 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 const MyParcels = () => {
+    const [parcels, setParcels] = useState([]);
+    const [filterParcels, setFilterParcels] = useState([]);
     const axiosPublic = useAxiosPublic();
 
 
@@ -14,12 +17,19 @@ const MyParcels = () => {
         queryFn: async () => {
             const res = await axiosPublic.get('/bookedParcel')
             // console.log(res.data);
-            return res.data
+            setParcels(res.data);
+            setFilterParcels(res.data);
+            return res.data;
+
         }, initialData: []
+
 
     })
 
     /*     const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, deliveryDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate } */
+
+    // console.log('filter', filterParcels);
+
 
 
 
@@ -63,9 +73,52 @@ const MyParcels = () => {
 
 
 
+
+    // filter Parcel data depends on status
+    const handleFilter = (filter) => {
+        if (filter === 'pending') {
+            const filterStatus = parcels.filter(parcel => parcel.status === 'pending');
+            setFilterParcels(filterStatus);
+        }
+        else if (filter === 'delivered') {
+            const filterStatus = parcels.filter(parcel => parcel.status === 'delivered');
+            setFilterParcels(filterStatus);
+        }
+        else if (filter === 'on the way') {
+            const filterStatus = parcels.filter(parcel => parcel.status === 'on the way');
+            setFilterParcels(filterStatus);
+        }
+        else if (filter === 'returned') {
+            const filterStatus = parcels.filter(parcel => parcel.status === 'returned');
+            setFilterParcels(filterStatus);
+        }
+        else if (filter === 'cancelled') {
+            const filterStatus = parcels.filter(parcel => parcel.status === 'cancelled');
+            setFilterParcels(filterStatus);
+        }
+    }
+
+
+
+
     return (
         <section>
             <h1>allBooking serces: {bookingParcels.length}</h1>
+
+            <div className="mt-10">
+                <details className="dropdown">
+                    <summary className="m-1 btn bg-violet-300 text-lg text-gray-800">Filter Status</summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-40">
+                        <li onClick={() => handleFilter('pending')}><a>pending</a></li>
+                        <li onClick={() => handleFilter('on the way')}><a>on the way</a></li>
+                        <li onClick={() => handleFilter('delivered')}><a>delivered</a></li>
+                        <li onClick={() => handleFilter('returned')}><a>returned</a></li>
+                        <li onClick={() => handleFilter('cancelled')}><a>cancelled</a></li>
+
+                    </ul>
+                </details>
+
+            </div>
 
 
 
@@ -88,7 +141,7 @@ const MyParcels = () => {
                         </thead>
                         <tbody>
                             {
-                                bookingParcels.map((item, index) => <tr key={item._id}>
+                                filterParcels.map((item, index) => <tr key={item._id}>
                                     <th>
                                         <p>{index + 1}</p>
                                     </th>
@@ -107,7 +160,7 @@ const MyParcels = () => {
                                     <td>{item.status}</td>
                                     <td>
                                         {
-                                            item.status === 'pending' ? <> <Link /* to={`/dashboard/updateMenu/${item._id}`} */>
+                                            item.status === 'pending' ? <> <Link to={`/dashboard/bookedParcel/${item._id}`}>
                                                 <button
                                                     className="bg-amber-400 p-2 rounded-md">
                                                     <span className="text-lg text-white "><FaEdit></FaEdit></span>

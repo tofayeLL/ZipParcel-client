@@ -15,6 +15,7 @@ import AllParcels from "../pages/Dashboard/Admin/AllParcels/AllParcels";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
 import AllDeliveryMen from "../pages/Dashboard/Admin/AllDeliveryMen/AllDeliveryMen";
 import Statistics from "../pages/Dashboard/Admin/Statistics/Statistics";
+import UpdateParcel from "../pages/Dashboard/MyParcels/UpdateParcel";
 
 
 
@@ -75,6 +76,11 @@ export const router = createBrowserRouter([
             {
                 path: 'myParcel',
                 element: <MyParcels></MyParcels>
+            },
+            {
+                path: 'bookedParcel/:id',
+                element: <UpdateParcel></UpdateParcel>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookedParcel/${params.id}`)
             },
             {
                 path: 'myProfile',
