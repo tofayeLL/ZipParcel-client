@@ -52,6 +52,8 @@ const BookParcel = () => {
                 confirmButtonText: 'Cool'
             })
             form.reset();
+            setPrice('');
+            setParcelWeight('');
 
         }
 
