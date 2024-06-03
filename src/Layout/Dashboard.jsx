@@ -31,7 +31,7 @@ const Dashboard = () => {
 
 
                 {/* pages */}
-                <div className="lg:w-64 w-80 min-h-screen bg-amber-400">
+                <div className="w-72  min-h-screen bg-amber-400">
                     <ul className="menu p-2 space-y-1">
 
 

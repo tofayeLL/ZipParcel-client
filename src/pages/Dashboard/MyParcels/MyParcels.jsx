@@ -105,7 +105,7 @@ const MyParcels = () => {
         <section>
             <h1>allBooking serces: {bookingParcels.length}</h1>
 
-            <div className="mt-10">
+            <div className="">
                 <details className="dropdown">
                     <summary className="m-1 btn bg-violet-300 text-lg text-gray-800">Filter Status</summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-40">
