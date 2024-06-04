@@ -3,9 +3,11 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 
 const MyParcels = () => {
+    const { user } = useAuth();
     const [parcels, setParcels] = useState([]);
     const [filterParcels, setFilterParcels] = useState([]);
     const axiosPublic = useAxiosPublic();
@@ -14,7 +16,7 @@ const MyParcels = () => {
     const { data: bookingParcels, refetch } = useQuery({
         queryKey: ['bookedParcel'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/bookedParcel')
+            const res = await axiosPublic.get(`/bookedParcel/${user?.email}`)
             // console.log(res.data);
             setParcels(res.data);
             setFilterParcels(res.data);
@@ -110,7 +112,10 @@ const MyParcels = () => {
 
                 <h1>allBooking serces: {bookingParcels.length}</h1>
 
-                <div className="">
+                <div className="flex items-center mb-4">
+                    <div>
+                        <h1 className="text-3xl text-orange-400">Filter Status by your preference:</h1>
+                    </div>
                     <details className="dropdown">
                         <summary className="m-1 btn bg-violet-300 text-lg text-gray-800">Choose status</summary>
                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-40">
@@ -172,7 +177,7 @@ const MyParcels = () => {
                                         <td>{item?.status}</td>
                                         <td>
                                             {
-                                                item.status === 'pending' ? <> <Link to={`/dashboard/bookedParcel/${item._id}`}>
+                                                item.status === 'pending' ? <> <Link to={`/dashboard/updateParcel/${item._id}`}>
                                                     <button
                                                         className="bg-amber-400 p-2 rounded-md">update
 

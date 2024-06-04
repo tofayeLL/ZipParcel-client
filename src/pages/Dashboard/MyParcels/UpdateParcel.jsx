@@ -4,8 +4,11 @@ import Swal from "sweetalert2";
 
 
 const UpdateParcel = () => {
-    const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = useLoaderData();
-
+    const item = useLoaderData()
+   /*  const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = useLoaderData(); */
+   
+   const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = item;
+   console.log(item);
     const axiosPublic = useAxiosPublic();
 
 
@@ -49,7 +52,7 @@ const UpdateParcel = () => {
 
     return (
         <section>
-            <h1>I am from update parcel page: </h1>
+            <h1>I am from update parcel page:{item._id} </h1>
 
             <div>
 

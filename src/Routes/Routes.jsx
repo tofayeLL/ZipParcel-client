@@ -78,9 +78,9 @@ export const router = createBrowserRouter([
                 element: <MyParcels></MyParcels>
             },
             {
-                path: 'bookedParcel/:id',
+                path: 'updateParcel/:id',
                 element: <UpdateParcel></UpdateParcel>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookedParcel/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/updateParcel/${params.id}`)
             },
             {
                 path: 'myProfile',

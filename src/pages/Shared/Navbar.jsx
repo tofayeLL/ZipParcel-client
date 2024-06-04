@@ -86,7 +86,7 @@ const Navbar = () => {
                             <div className="dropdown dropdown-end  text-black">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-14 rounded-full ">
-                                        <img alt="Tailwind CSS Navbar component" src={user?.photoURL || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} className="" />
+                                        <img alt="image" src={user?.photoURL || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} className="" />
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-0 z-[1] p-2 shadow bg-base-100 rounded-box  w-52">
