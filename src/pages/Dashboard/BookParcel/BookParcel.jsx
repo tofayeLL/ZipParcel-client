@@ -20,7 +20,7 @@ const BookParcel = () => {
         const userPhone = form.userPhone.value;
         const parcelType = form.parcelType.value;
         const deliveryAddress = form.deliveryAddress.value;
-        const deliveryDate = form.deliveryDate.value;
+        const requestedDate = form.requestedDate.value;
         const latitudes = form.latitudes.value;
         const longitude = form.longitude.value;
         const receiverName = form.receiverName.value;
@@ -33,12 +33,13 @@ const BookParcel = () => {
 
         const status = "pending";
         const bookingDate = new Date();
+        const approximateDate = "not available";
         // console.log(status);
         // console.log(bookingDate);
 
 
 
-        const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, deliveryDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate }
+        const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate, approximateDate }
         // console.log(parcel);
 
 
@@ -120,22 +121,22 @@ const BookParcel = () => {
                                     <label className="label">
                                         <span className="label-text lg:text-lg text-base font-semibold"> Parcel Weight (kg)</span>
                                     </label>
-                                   
+
                                     <input type="number" name="parcelWeight" value={parcelWeight} onChange={handleWeight} placeholder="Parcel Weight" className="input input-bordered" required />
                                 </div>
                                 {/* 3*/}
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text lg:text-lg text-base font-semibold">  Requested Delivery Date</span>
+                                        <span className="label-text lg:text-lg text-base font-semibold">Requested Delivery Date</span>
                                     </label>
-                                    <input type="date" name="deliveryDate" placeholder="Delivery Date" className="input input-bordered" required />
+                                    <input type="date" name="requestedDate" placeholder="Requested Date" className="input input-bordered" required />
                                 </div>
                                 {/* 3*/}
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text lg:text-lg text-base font-semibold">Price (Tk)</span>
                                     </label>
-                                  
+
                                     <input type="text" name="price" value={price} placeholder="Price" className="input input-bordered" readOnly />
                                 </div>
 

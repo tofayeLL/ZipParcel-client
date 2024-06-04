@@ -41,7 +41,7 @@ const MyProfile = () => {
             .then(
                 () => setUser(
                     {
-                        ...user, displayName: name, photoURL: photo,
+                        ...user, displayName: name, photoURL: photo
                     }
 
                 )
@@ -68,16 +68,16 @@ const MyProfile = () => {
                             <span className="label-text lg:text-lg text-base font-semibold">Name</span>
                         </label>
 
-                        <input type="text" defaultValue={user?.displayName}   {...register("name")} placeholder="email" className="input input-bordered" />
+                        <input type="text" defaultValue={user?.displayName} disabled  {...register("name")} placeholder="name" className="input input-bordered" />
 
                     </div>
                     <div className="form-control">
 
                         <label className="label">
-                            <span className="label-text lg:text-lg text-base font-semibold">Email</span>
+                            <span className="label-text lg:text-lg  text-base font-semibold">Email</span>
                         </label>
 
-                        <input type="text" defaultValue={user?.email}    {...register("email")} placeholder="email" className="input input-bordered" />
+                        <input type="text" defaultValue={user?.email} disabled   {...register("email")} placeholder="email" className="input  input-bordered" />
 
                     </div>
 
