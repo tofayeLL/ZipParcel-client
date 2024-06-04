@@ -38,6 +38,7 @@ const SignUp = () => {
                 const userInfo = {
                     name: data.name,
                     email: data.email,
+                    phone: data.phone,
                     userType: data.userType
                 }
 
@@ -103,8 +104,15 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email"    {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+                            <input type="email"    {...register("email", { required: true })} name="email" placeholder="Your Email" className="input input-bordered" />
                             {errors.email && <span className='text-red-400'>Email field is required</span>}
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Phone Number</span>
+                            </label>
+                            <input type="phone"    {...register("phone", { required: true })} name="phone" placeholder="Your Number" className="input input-bordered" />
+                            {errors.phone && <span className='text-red-400'>phone field is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -144,7 +152,7 @@ const SignUp = () => {
                                 <span className="label-text lg:text-lg text-base font-semibold">UserType</span>
                             </label>
 
-                            <select defaultValue={'default'} name="userType" {...register("userType", { required: true })}
+                            <select defaultValue={'User'} name="userType" {...register("userType", { required: true })}
                                 className="select select-bordered w-full ">
                                 <option disabled value={'default'}>Choose a UserType</option>
                                 <option value="User">User</option>

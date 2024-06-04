@@ -2,7 +2,7 @@
     {
         "userName": "chacha",
         "userEmail": "chacha@chachi.com",
-        "userPhone": "01745234567",
+        "userPhone": "345-678-9012",
         "parcelType": "Box",
         "parcelWeight": 1,
         "deliveryAddress": "sirajgonj",
@@ -19,7 +19,7 @@
     {
         "userName": "chacha",
         "userEmail": "chacha@chachi.com",
-        "userPhone": "01876543210",
+        "userPhone": "345-678-9012",
         "parcelType": "Envelope",
         "parcelWeight": 0.5,
         "deliveryAddress": "dhaka",
@@ -36,7 +36,7 @@
     {
         "userName": "chacha",
         "userEmail": "chacha@chachi.com",
-        "userPhone": "01987654321",
+        "userPhone": "345-678-9012",
         "parcelType": "Packet",
         "parcelWeight": 2,
         "deliveryAddress": "chittagong",
@@ -53,7 +53,7 @@
     {
         "userName": "Tofayel Ahmed",
         "userEmail": "ahmedtofayel132@gmail.com",
-        "userPhone": "01712345678",
+        "userPhone": "234-567-8901",
         "parcelType": "Tube",
         "parcelWeight": 1.5,
         "deliveryAddress": "khulna",
@@ -70,7 +70,7 @@
     {
         "userName": "Tofayel Ahmed",
         "userEmail": "ahmedtofayel132@gmail.com",
-        "userPhone": "01823456789",
+        "userPhone": "234-567-8901",
         "parcelType": "Crate",
         "parcelWeight": 3,
         "deliveryAddress": "rajshahi",
@@ -87,7 +87,7 @@
     {
         "userName": "Tofayel Ahmed",
         "userEmail": "ahmedtofayel132@gmail.com",
-        "userPhone": "01798765432",
+        "userPhone": "234-567-8901",
         "parcelType": "Box",
         "parcelWeight": 4,
         "deliveryAddress": "sylhet",
@@ -104,7 +104,7 @@
     {
         "userName": "ahiyan",
         "userEmail": "ahiyan@gmail.com",
-        "userPhone": "01834567890",
+        "userPhone": "123-456-7890",
         "parcelType": "Envelope",
         "parcelWeight": 0.2,
         "deliveryAddress": "barisal",
@@ -121,7 +121,7 @@
     {
         "userName": "ahiyan",
         "userEmail": "ahiyan@gmail.com",
-        "userPhone": "01912345678",
+        "userPhone": "123-456-7890",
         "parcelType": "Packet",
         "parcelWeight": 2.5,
         "deliveryAddress": "comilla",
@@ -138,7 +138,7 @@
     {
         "userName": "ahiyan",
         "userEmail": "ahiyan@gmail.com",
-        "userPhone": "01787654321",
+        "userPhone": "123-456-7890",
         "parcelType": "Tube",
         "parcelWeight": 1.8,
         "deliveryAddress": "gazipur",
@@ -155,7 +155,7 @@
     {
         "userName": "ahiyan",
         "userEmail": "ahiyan@gmail.com",
-        "userPhone": "01823456789",
+        "userPhone": "123-456-7890",
         "parcelType": "Crate",
         "parcelWeight": 5,
         "deliveryAddress": "narayanganj",

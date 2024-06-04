@@ -71,7 +71,7 @@ const AllParcels = () => {
                                         <td>{item.requestedDate}</td>
                                         <td>{item?.price}</td>
                                         <td>{item?.status}</td>
-                                        <td className="p-4 text-right">
+                                        <td className="lg:p-4 lg:text-right">
                                         
                                             <button
                                                 className="bg-amber-400 p-2 rounded-md">manage
