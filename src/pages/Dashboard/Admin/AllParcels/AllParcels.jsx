@@ -7,13 +7,15 @@ import ManageForm from "./ManageForm ";
 
 const AllParcels = () => {
     const axiosPublic = useAxiosPublic();
+    const [allParcels, setAllParcels] = useState([])
 
     const { data: bookedParcels, refetch } = useQuery({
         queryKey: ['bookedParcel'],
         queryFn: async () => {
-            const res = axiosPublic.get('/bookedParcel')
-            console.log(res.data)
-            return (await res).data;
+            const res = await axiosPublic.get('/bookedParcel')
+            // console.log(res.data)
+            setAllParcels(res.data)
+            return res.data;
 
         }, initialData: []
     })
@@ -43,14 +45,71 @@ const AllParcels = () => {
 
 
 
+    // ---------search depends on request date  form Booking parcel ----
+    const handleRequestedDate = async (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const dateFrom = form.dateFrom.value;
+        const dateTo = form.dateTo.value;
+        const searchDate = { dateFrom, dateTo }
+        console.log(searchDate);
+
+        const res = await axiosPublic.post('/search', searchDate)
+        // console.log(res.data);
+        setAllParcels(res.data)
+
+
+
+    }
+
+
+
+
+
     return (
         <div>
 
             <h1>from All parcels: {bookedParcels.length}</h1>
 
+            {/* implement search by depends on request date */}
+            <div className="bg-gray-300 py-6 mb-4 text-center rounded-md ">
+                <div>
+                    <h1 className="text-3xl font-semibold text-orange-600">Search Parcel Request form Users</h1>
+                </div>
+                <form onSubmit={handleRequestedDate} className="lg:w-[80%] w-full mx-auto space-y-5 rounded-lg mt-5 " >
+
+                    <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4">
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text lg:text-lg text-base font-semibold">Requested delivery date From</span>
+                            </label>
+                            <input type="date" name="dateFrom" placeholder="Date From" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text lg:text-lg text-base font-semibold">Requested delivery date To</span>
+                            </label>
+                            <input type="date" name="dateTo" placeholder="Date To" className="input input-bordered" required />
+
+                        </div>
+
+
+                    </div>
+
+                    <div className="form-control mt-6">
+                        <input type="submit" value="Search" className="btn text-xl text-white outline-non bg-gray-500 hover:text-orange-400 hover:bg-gray-500" />
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+            {/* Tabular form or Table */}
+
             <div>
-
-
 
                 <div>
                     <div className="overflow-x-auto">
@@ -73,7 +132,7 @@ const AllParcels = () => {
                             </thead>
                             <tbody>
                                 {
-                                    bookedParcels.map((item, index) => <tr key={item._id}>
+                                    allParcels.map((item, index) => <tr key={item._id}>
                                         <th>
                                             <p>{index + 1}</p>
                                         </th>
@@ -136,7 +195,6 @@ const AllParcels = () => {
 
 
             </div>
-
 
 
 

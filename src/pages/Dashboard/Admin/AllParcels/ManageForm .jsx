@@ -48,7 +48,7 @@ const ManageForm = ({ itemId, onClose }) => {
 
             Swal.fire({
                 title: 'Success!',
-                text: `parcel update  successfully`,
+                text: `Assign successfully`,
                 icon: 'success',
                 confirmButtonText: 'Cool'
             })
