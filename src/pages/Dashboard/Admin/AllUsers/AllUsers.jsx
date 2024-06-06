@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const AllUsers = () => {
     const axiosPublic = useAxiosPublic();
 
-    const { data: allUsers } = useQuery({
+    const { data: allUsers, refetch } = useQuery({
         queryKey: ['allParcels'],
         queryFn: async () => {
             const res = await axiosPublic.get('/allParcels')
@@ -18,9 +19,43 @@ const AllUsers = () => {
 
 
     // handle Manage Item
-    const handleMakeDeliveryMan = (item) => {
+    const handleMakeDeliveryMan = async (item) => {
         console.log(item);
-    } 
+        const res = await axiosPublic.patch(`/makeDeliveryMen/${item.userEmail}`)
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+            // show success popup
+
+            Swal.fire({
+                title: 'Success!',
+                text: `${item.userName}  is deliveryMen Now`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
+
+            refetch();
+
+        }
+    }
+    // handle Manage Item
+    const handleMakeAdmin = async (item) => {
+        console.log(item);
+        const res = await axiosPublic.patch(`/makeAdmin/${item.userEmail}`)
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+            
+
+            Swal.fire({
+                title: 'Success!',
+                text: `${item.userName}  is Admin Now`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
+
+            refetch();
+
+        }
+    }
 
 
 
@@ -73,18 +108,31 @@ const AllUsers = () => {
                                     <td>{item.totalAmount}</td>
                                     <td>
 
-                                        <button onClick={() => handleMakeDeliveryMan(item)}
-                                            className="bg-amber-400 p-2 rounded-md">deliveryMen
+                                        {
+                                            item.userType === 'DeliveryMen' ? <button disabled onClick={() => handleMakeDeliveryMan(item)}
+                                                className="bg-amber-400 btn  rounded-md">deliveryMen
 
-                                        </button>
+                                            </button>
+                                                :
+                                                <button onClick={() => handleMakeDeliveryMan(item)}
+                                                    className="bg-amber-400  btn rounded-md">deliveryMen
+
+                                                </button>
+                                        }
                                     </td>
 
                                     <td >
 
-                                        <button
-                                            className="bg-amber-400 p-2 rounded-md">Admin
+                                        {
+                                            item.userType === 'Admin' ? <button disabled
+                                                className="bg-amber-400 btn rounded-md">Admin
 
-                                        </button>
+                                            </button> :
+
+                                                <button onClick={() => handleMakeAdmin(item)}
+                                                    className="bg-amber-400 btn  rounded-md">Admin
+
+                                                </button>}
 
                                     </td>
 

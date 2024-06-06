@@ -1,14 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useBookedParcel from "../../../hooks/useBookedParcel";
 
 
 const UpdateParcel = () => {
     const item = useLoaderData();
-   /*  const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = useLoaderData(); */
-   
-   const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = item;
-   console.log(item);
+    const { refetch } = useBookedParcel();
+    /*  const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = useLoaderData(); */
+
+    const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = item;
+    console.log(item);
     const axiosPublic = useAxiosPublic();
 
 
@@ -43,7 +45,7 @@ const UpdateParcel = () => {
                 confirmButtonText: 'Cool'
             })
 
-            // refetch();
+            refetch();
 
         }
     }

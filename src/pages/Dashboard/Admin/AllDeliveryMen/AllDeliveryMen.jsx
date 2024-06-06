@@ -63,11 +63,11 @@ const AllDeliveryMen = () => {
                                             item.phone
                                         }
                                     </td>
-                                    <td>
-                                       
+                                    <td>0
+
                                     </td>
-                                    <td>
-                                        
+                                    <td>0
+
                                     </td>
 
 

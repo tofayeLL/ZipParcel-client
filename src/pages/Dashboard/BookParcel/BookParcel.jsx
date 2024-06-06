@@ -1,16 +1,39 @@
-import { useState } from "react";
+import {useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
+
 
 
 const BookParcel = () => {
     const [parcelWeight, setParcelWeight] = useState('');
+   /*  const [loading, setLoading] = useState(false) */
     const [price, setPrice] = useState('');
 
+
     const { user } = useAuth();
+    console.log(user);
+
+
 
     const axiosPublic = useAxiosPublic();
+
+
+   /*  useEffect(() => {
+      
+        if (!user?.displayName) {
+            setLoading(true);
+        } else {
+            setLoading(false);
+        }
+    }, [user]); */
+
+
+
+
+
+
+
 
     const handleBook = async (e) => {
         e.preventDefault();
@@ -85,15 +108,14 @@ const BookParcel = () => {
 
 
 
-
     return (
         <section>
 
 
             <div>
 
-
                 <div className="max-w-full mx-auto  bg-slate-200   ">
+                 {/*    {loading && <p>Loading...</p>} */}
 
 
                     <form onSubmit={handleBook} className="card-body" >

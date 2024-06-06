@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
+import useUserRole from "../../../hooks/useUserRole";
 
 
 
@@ -10,7 +11,8 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const MyProfile = () => {
-    const { user, updateUserProfile, setUser } = useAuth();
+    const { refetch } = useUserRole();
+    const { user, updateUserProfile, setUser} = useAuth();
     const axiosPublic = useAxiosPublic();
 
     const {
@@ -31,9 +33,11 @@ const MyProfile = () => {
             }
         });
         console.log(res.data);
+        refetch();
         const photo = res.data.data.display_url;
         const name = data.name;
         console.log(photo)
+        console.log('from my profile',user, name)
 
 
         // update profile photo from firebase
@@ -41,11 +45,14 @@ const MyProfile = () => {
             .then(
                 () => setUser(
                     {
-                        ...user, displayName: name, photoURL: photo
+                        ...user, displayName: name || user?.displayName, photoURL: photo
                     }
 
                 )
+
             )
+           
+       
     }
 
 

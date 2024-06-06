@@ -9,7 +9,7 @@ const useUserRole = () => {
     const { user } = useAuth();
 
 
-    const { data: getUser } = useQuery({
+    const { data: getUser, refetch } = useQuery({
         queryKey: [user?.email, 'isAdmin'],
        
         queryFn: async () => {
@@ -18,7 +18,7 @@ const useUserRole = () => {
             return data.data.userType;
         }, initialData: []
     })
-    return { getUser };
+    return { getUser, refetch };
 
 };
 

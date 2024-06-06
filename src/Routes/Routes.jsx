@@ -51,19 +51,19 @@ export const router = createBrowserRouter([
             // Admin routes
             {
                 path: 'allParcel',
-                element: <AllParcels></AllParcels>
+                element: <PrivateRoute><AllParcels></AllParcels></PrivateRoute>
             },
             {
                 path: 'allUsers',
-                element: <AllUsers></AllUsers>
+                element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
             },
             {
                 path: 'allDeliveryMen',
-                element: <AllDeliveryMen></AllDeliveryMen>
+                element: <PrivateRoute><AllDeliveryMen></AllDeliveryMen></PrivateRoute>
             },
             {
                 path: 'statistics',
-                element: <Statistics></Statistics>
+                element: <PrivateRoute><Statistics></Statistics></PrivateRoute>
             },
 
 
@@ -71,20 +71,20 @@ export const router = createBrowserRouter([
             // normal user routes
             {
                 path: 'bookParcel',
-                element: <BookParcel></BookParcel>
+                element: <PrivateRoute><BookParcel></BookParcel></PrivateRoute>
             },
             {
                 path: 'myParcel',
-                element: <MyParcels></MyParcels>
+                element: <PrivateRoute><MyParcels></MyParcels></PrivateRoute>
             },
             {
                 path: 'updateParcel/:id',
-                element: <UpdateParcel></UpdateParcel>,
+                element: <PrivateRoute><UpdateParcel></UpdateParcel></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/updateParcel/${params.id}`)
             },
             {
                 path: 'myProfile',
-                element: <MyProfile></MyProfile>
+                element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
             },
 
 

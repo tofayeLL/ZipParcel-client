@@ -38,7 +38,7 @@ const Dashboard = () => {
                         {/* Admin */}
 
                         {
-                           /*  admin && */ <>
+                          /*   admin && */ <>
                                 <li>
                                     <NavLink to={'/dashboard/allParcel'}><span><FaBook></FaBook> </span>All Parcels</NavLink>
                                 </li>
@@ -58,7 +58,7 @@ const Dashboard = () => {
 
                         {/* normal user */}
                         {
-                           /*  user && */ <>
+                            /* user && */ <>
 
                                 <li >
                                     <NavLink to={'/dashboard/bookParcel'}><span><FaBook></FaBook> </span>Book a Parcel</NavLink>
