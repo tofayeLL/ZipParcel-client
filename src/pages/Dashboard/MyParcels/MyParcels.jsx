@@ -37,7 +37,7 @@ const MyParcels = () => {
     // console.log('filter', filterParcels);
 
 
-    const handleDeleteItem = (item) => {
+    const handleCancelItem = (item) => {
         // console.log(item);
         Swal.fire({
             title: "Are you sure?",
@@ -213,7 +213,7 @@ const MyParcels = () => {
                                         </td>
                                         <td>
                                             {
-                                                item.status === 'pending' ? <> <button onClick={() => handleDeleteItem(item)}
+                                                item.status === 'pending' ? <> <button onClick={() => handleCancelItem(item)}
                                                     className="bg-red-400 btn rounded-md">cancel
 
                                                 </button></>

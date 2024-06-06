@@ -31,8 +31,8 @@ const Dashboard = () => {
 
 
                 {/* pages */}
-                <div className="w-72  min-h-screen bg-amber-400">
-                    <ul className="menu p-2 space-y-1">
+                <div className="w-40  min-h-screen bg-amber-400">
+                    <ul className="menu space-y-1">
 
 
                         {/* Admin */}
@@ -78,10 +78,10 @@ const Dashboard = () => {
                         {
                             deliveryMen && <>
 
-                                <li>
+                                <li className="text-xs ">
                                     <NavLink to={'/dashboard/deliveryList'}><span><FaBook></FaBook> </span>My Delivery List</NavLink>
                                 </li>
-                                <li>
+                                <li className="text-xs">
                                     <NavLink to={'/dashboard/myReviews'}><span><FaBook></FaBook> </span>My Reviews</NavLink>
                                 </li>
                             </>
