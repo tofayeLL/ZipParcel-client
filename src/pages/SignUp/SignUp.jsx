@@ -152,14 +152,15 @@ const SignUp = () => {
                                 <span className="label-text lg:text-lg text-base font-semibold">UserType</span>
                             </label>
 
-                            <select defaultValue={'User'} name="userType" {...register("userType", { required: true })}
+                            <select required defaultValue="" name="userType" {...register("userType", { required: true })}
                                 className="select select-bordered w-full ">
-                                <option disabled value={'default'}>Choose a UserType</option>
+                                <option disabled value="">Choose a UserType</option>
                                 <option value="User">User</option>
                                 <option value="Admin">Admin</option>
                                 <option value="DeliveryMen">DeliveryMen</option>
 
                             </select>
+                            {errors.userType && <span className='text-red-400'>userType field is required</span>}
 
 
                         </div>

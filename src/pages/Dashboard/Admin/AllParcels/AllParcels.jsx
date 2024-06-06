@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import { useRef, useState } from "react";
+import ManageForm from "./ManageForm ";
+
 
 
 const AllParcels = () => {
     const axiosPublic = useAxiosPublic();
 
-    const { data: bookedParcels } = useQuery({
+    const { data: bookedParcels, refetch } = useQuery({
         queryKey: ['bookedParcel'],
         queryFn: async () => {
             const res = axiosPublic.get('/bookedParcel')
@@ -18,9 +21,31 @@ const AllParcels = () => {
     /*          const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate, approximateDate } */
 
 
+    // --------Modal--------//
+    const [currentItemId, setCurrentItemId] = useState(null);
+    const modalRef = useRef();
+
+    const handleManage = (id) => {
+        setCurrentItemId(id);
+        modalRef.current.showModal();
+        refetch();
+    };
+
+
+    // close modal handler
+    const handleModalClose = () => {
+        modalRef.current.close();
+        setCurrentItemId(null); // Reset the current item ID
+        refetch();
+    };
+
+
+
+
 
     return (
         <div>
+
             <h1>from All parcels: {bookedParcels.length}</h1>
 
             <div>
@@ -72,11 +97,11 @@ const AllParcels = () => {
                                         <td>{item?.price}</td>
                                         <td>{item?.status}</td>
                                         <td className="lg:p-4 lg:text-right">
-                                        
-                                            <button
-                                                className="bg-amber-400 p-2 rounded-md">manage
 
-                                            </button>
+                                            <button onClick={() => handleManage(item._id)}>manage</button>
+
+
+
 
                                         </td>
 
@@ -89,13 +114,35 @@ const AllParcels = () => {
 
 
                     </div>
+                    <dialog ref={modalRef} id="my_modal_5"
+                        className="modal modal-bottom sm:modal-middle"
+                        onClick={handleModalClose}
+                    >
+                        <div
+                            className="modal-box"
+                            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+                        >
+                            {currentItemId && (
+                                <ManageForm
+                                    itemId={currentItemId}
+                                    onClose={handleModalClose}
+
+                                />
+                            )}
+                        </div>
+                    </dialog>
 
                 </div>
 
 
             </div>
 
-        </div>
+
+
+
+
+
+        </div >
     );
 };
 

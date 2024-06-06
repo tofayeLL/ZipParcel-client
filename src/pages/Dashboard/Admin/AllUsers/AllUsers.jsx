@@ -17,6 +17,12 @@ const AllUsers = () => {
     console.log(allUsers);
 
 
+    // handle Manage Item
+    const handleMakeDeliveryMan = (item) => {
+        console.log(item);
+    } 
+
+
 
 
     return (
@@ -67,8 +73,8 @@ const AllUsers = () => {
                                     <td>{item.totalAmount}</td>
                                     <td>
 
-                                        <button
-                                            className="bg-amber-400 p-2 rounded-md">manage
+                                        <button onClick={() => handleMakeDeliveryMan(item)}
+                                            className="bg-amber-400 p-2 rounded-md">deliveryMen
 
                                         </button>
                                     </td>
@@ -76,7 +82,7 @@ const AllUsers = () => {
                                     <td >
 
                                         <button
-                                            className="bg-amber-400 p-2 rounded-md">manage
+                                            className="bg-amber-400 p-2 rounded-md">Admin
 
                                         </button>
 

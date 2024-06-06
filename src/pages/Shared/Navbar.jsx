@@ -4,19 +4,26 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useUserRole from "../../hooks/useUserRole";
 
 
 const Navbar = () => {
+    const { getUser } = useUserRole();
+    console.log(getUser)
 
     const { user, logOutUser } = useAuth();
-   
+
 
 
 
 
     const links = <>
         <li className="text-lg"><NavLink to={'/'}>Home</NavLink></li>
-        <li className="text-lg"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+        {getUser === 'Admin' ? <li className="text-lg"><NavLink to={'/dashboard/statistics'}>Dashboard</NavLink></li>
+            :
+            <li className="text-lg"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+
+        }
         <li className="text-lg"><NavLink to={'/order'}>Ordered</NavLink></li>
         <li className="text-lg"><NavLink to={'/secret'}>Secret</NavLink></li>
 

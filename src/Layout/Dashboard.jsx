@@ -10,10 +10,10 @@ const Dashboard = () => {
     // console.log(getUser);
 
     // For Check user Admin
-    const admin = getUser === 'Admin';
+    // const admin = getUser === 'Admin';
 
     // For Check user User
-    const user = getUser === 'User';
+    // const user = getUser === 'User';
 
     // For Check user DeliveryMen
     const deliveryMen = getUser === 'DeliveryMen';
@@ -38,7 +38,7 @@ const Dashboard = () => {
                         {/* Admin */}
 
                         {
-                            admin && <>
+                           /*  admin && */ <>
                                 <li>
                                     <NavLink to={'/dashboard/allParcel'}><span><FaBook></FaBook> </span>All Parcels</NavLink>
                                 </li>
@@ -58,9 +58,9 @@ const Dashboard = () => {
 
                         {/* normal user */}
                         {
-                            user && <>
+                           /*  user && */ <>
 
-                                <li>
+                                <li >
                                     <NavLink to={'/dashboard/bookParcel'}><span><FaBook></FaBook> </span>Book a Parcel</NavLink>
                                 </li>
                                 <li>

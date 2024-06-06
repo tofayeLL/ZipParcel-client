@@ -34,12 +34,13 @@ const BookParcel = () => {
         const status = "pending";
         const bookingDate = new Date();
         const approximateDate = "not available";
+        const deliveryMenID = "not available";
         // console.log(status);
         // console.log(bookingDate);
 
 
 
-        const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate, approximateDate }
+        const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate, approximateDate, deliveryMenID }
         // console.log(parcel);
 
 

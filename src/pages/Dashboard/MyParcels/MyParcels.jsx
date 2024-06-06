@@ -1,30 +1,36 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useState } from "react";
-import useAuth from "../../../hooks/useAuth";
+/* import { useState } from "react";
+import useAuth from "../../../hooks/useAuth"; */
+import useBookedParcel from "../../../hooks/useBookedParcel";
 
 
 const MyParcels = () => {
-    const { user } = useAuth();
-    const [parcels, setParcels] = useState([]);
-    const [filterParcels, setFilterParcels] = useState([]);
     const axiosPublic = useAxiosPublic();
 
+    const { bookingParcels, refetch, parcels, filterParcels, setFilterParcels } = useBookedParcel();
 
-    const { data: bookingParcels, refetch } = useQuery({
-        queryKey: ['bookedParcel'],
-        queryFn: async () => {
-            const res = await axiosPublic.get(`/bookedParcel/${user?.email}`)
-            // console.log(res.data);
-            setParcels(res.data);
-            setFilterParcels(res.data);
-            return res.data;
 
-        }, initialData: []
-
-    })
+    /*  const { user } = useAuth();
+     const [parcels, setParcels] = useState([]);
+     const [filterParcels, setFilterParcels] = useState([]);
+     const axiosPublic = useAxiosPublic();
+ 
+ 
+     const { data: bookingParcels, refetch } = useQuery({
+         queryKey: ['bookedParcel'],
+         queryFn: async () => {
+             const res = await axiosPublic.get(`/bookedParcel/${user?.email}`)
+             // console.log(res.data);
+             setParcels(res.data);
+             setFilterParcels(res.data);
+             return res.data;
+ 
+         }, initialData: []
+ 
+     }) */
 
     /*     const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, deliveryDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate } */
 
@@ -146,6 +152,7 @@ const MyParcels = () => {
                                     <th >Requested Delivery Date</th>
                                     <th >Approximate Delivery Date</th>
                                     <th>Booking Date</th>
+                                    <th>Delivery Men ID</th>
                                     <th>Booking Status</th>
                                     <th>UPDATE</th>
                                     <th>Cancel</th>
@@ -159,23 +166,24 @@ const MyParcels = () => {
                                         </th>
                                         <td>
                                             {
-                                                item.parcelType
+                                                item?.parcelType
                                             }
                                         </td>
 
                                         <td>
                                             {
-                                                item.requestedDate
+                                                item?.requestedDate
                                             }
                                         </td>
                                         <td>
                                             {
-                                                item.approximateDate
+                                                item?.approximateDate
                                             }
                                         </td>
-                                        <td>{item.bookingDate?.slice(0, 10)}</td>
+                                        <td>{item?.bookingDate?.slice(0, 10)}</td>
+                                        <td>{item?.deliveryMenID}</td>
                                         <td>{item?.status}</td>
-                                        <td>
+                                        <td className="space-y-3">
                                             {
                                                 item.status === 'pending' ? <> <Link to={`/dashboard/updateParcel/${item._id}`}>
                                                     <button
@@ -191,6 +199,17 @@ const MyParcels = () => {
                                                     </button>
 
                                             }
+                                            {/* {
+                                                item.status === 'pending' ? <> <button onClick={() => handleDeleteItem(item)}
+                                                    className="bg-red-400 p-2 rounded-md">cancel
+
+                                                </button></>
+                                                    :
+                                                    <button
+                                                        className="bg-red-400 p-2 rounded-md">cancel
+
+                                                    </button>
+                                            } */}
                                         </td>
                                         <td>
                                             {
