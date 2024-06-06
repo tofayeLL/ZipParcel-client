@@ -15,7 +15,7 @@ const useUserRole = () => {
         queryFn: async () => {
             const data = await axiosPublic.get(`/user/${user?.email}`);
             // console.log(data.data);
-            return data.data.userType;
+            return data.data;
         }, initialData: []
     })
     return { getUser, refetch };

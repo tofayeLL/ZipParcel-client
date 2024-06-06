@@ -7,32 +7,11 @@ import useAuth from "../../../hooks/useAuth";
 
 const BookParcel = () => {
     const [parcelWeight, setParcelWeight] = useState('');
-   /*  const [loading, setLoading] = useState(false) */
     const [price, setPrice] = useState('');
 
-
     const { user } = useAuth();
-    console.log(user);
-
-
-
+    // console.log(user);
     const axiosPublic = useAxiosPublic();
-
-
-   /*  useEffect(() => {
-      
-        if (!user?.displayName) {
-            setLoading(true);
-        } else {
-            setLoading(false);
-        }
-    }, [user]); */
-
-
-
-
-
-
 
 
     const handleBook = async (e) => {
@@ -115,8 +94,7 @@ const BookParcel = () => {
             <div>
 
                 <div className="max-w-full mx-auto  bg-slate-200   ">
-                 {/*    {loading && <p>Loading...</p>} */}
-
+            
 
                     <form onSubmit={handleBook} className="card-body" >
                         <h1 className="text-4xl font-bold text-orange-500">Book a Parcel</h1>

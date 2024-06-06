@@ -16,7 +16,7 @@ const Dashboard = () => {
     // const user = getUser === 'User';
 
     // For Check user DeliveryMen
-    const deliveryMen = getUser === 'DeliveryMen';
+    const deliveryMen = getUser.userType === 'DeliveryMen';
 
 
 
