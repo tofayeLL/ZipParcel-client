@@ -15,14 +15,14 @@ const AllUsers = () => {
 
         }, initialData: []
     })
-    console.log(allUsers);
+    // console.log(allUsers);
 
 
-    // handle Manage Item
+    // handle Make deliverymen 
     const handleMakeDeliveryMan = async (item) => {
-        console.log(item);
+        // console.log(item);
         const res = await axiosPublic.patch(`/makeDeliveryMen/${item.userEmail}`)
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.modifiedCount > 0) {
             // show success popup
 
@@ -37,11 +37,13 @@ const AllUsers = () => {
 
         }
     }
-    // handle Manage Item
+
+
+    // handle make admin
     const handleMakeAdmin = async (item) => {
-        console.log(item);
+        // console.log(item);
         const res = await axiosPublic.patch(`/makeAdmin/${item.userEmail}`)
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.modifiedCount > 0) {
             
 

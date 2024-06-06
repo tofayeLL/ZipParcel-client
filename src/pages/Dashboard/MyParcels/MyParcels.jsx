@@ -187,14 +187,14 @@ const MyParcels = () => {
                                             {
                                                 item.status === 'pending' ? <> <Link to={`/dashboard/updateParcel/${item._id}`}>
                                                     <button
-                                                        className="bg-amber-400 p-2 rounded-md">update
+                                                        className="bg-amber-400 btn rounded-md">update
 
                                                     </button>
                                                 </Link></>
                                                     :
 
                                                     <button disabled
-                                                        className="bg-amber-400 p-2 rounded-md">update
+                                                        className="bg-amber-400 btn rounded-md">update
 
                                                     </button>
 
@@ -214,12 +214,12 @@ const MyParcels = () => {
                                         <td>
                                             {
                                                 item.status === 'pending' ? <> <button onClick={() => handleDeleteItem(item)}
-                                                    className="bg-red-400 p-2 rounded-md">cancel
+                                                    className="bg-red-400 btn rounded-md">cancel
 
                                                 </button></>
                                                     :
-                                                    <button
-                                                        className="bg-red-400 p-2 rounded-md">cancel
+                                                    <button disabled
+                                                        className="bg-red-400 btn rounded-md">cancel
 
                                                     </button>
                                             }

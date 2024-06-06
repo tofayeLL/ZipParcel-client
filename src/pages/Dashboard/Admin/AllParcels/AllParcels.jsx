@@ -157,7 +157,8 @@ const AllParcels = () => {
                                         <td>{item?.status}</td>
                                         <td className="lg:p-4 lg:text-right">
 
-                                            <button onClick={() => handleManage(item._id)}>manage</button>
+                                            <button onClick={() => handleManage(item._id)}
+                                                className="bg-amber-400  btn rounded-md">manage</button>
 
 
 
