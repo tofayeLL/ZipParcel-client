@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 /* import { useState } from "react";
 import useAuth from "../../../hooks/useAuth"; */
 import useBookedParcel from "../../../hooks/useBookedParcel";
+import { useRef, useState } from "react";
+import ModalReviewForm from "./ModalReviewForm";
 
 
 const MyParcels = () => {
@@ -103,7 +105,38 @@ const MyParcels = () => {
             const filterStatus = parcels.filter(parcel => parcel.status === 'cancelled');
             setFilterParcels(filterStatus);
         }
+
+
+
     }
+
+
+
+
+
+    // modal and handle review
+
+    const [deliveryMenID, setDeliveryMenID] = useState(null);
+    const modalRef = useRef();
+
+    // handle review button
+    const handleReview = (id) => {
+        console.log(id);
+        setDeliveryMenID(id);
+        modalRef.current.showModal();
+    }
+
+
+    // modal
+    const handleModalClose = () => {
+        modalRef.current.close();
+        setDeliveryMenID(null);
+
+
+    }
+
+
+
 
 
 
@@ -118,12 +151,12 @@ const MyParcels = () => {
 
                 <h1>allBooking serces: {bookingParcels.length}</h1>
 
-                <div className="flex items-center mb-4">
+                <div className="flex flex-col gap-3  items-center mb-4 bg-gray-300 py-10">
                     <div>
-                        <h1 className="text-3xl text-orange-400">Filter Status by your preference:</h1>
+                        <h1 className="text-3xl font-semibold text-orange-600">Filter Your Delivery Status by category</h1>
                     </div>
                     <details className="dropdown">
-                        <summary className="m-1 btn bg-violet-300 text-lg text-gray-800">Choose status</summary>
+                        <summary className="m-1 btn bg-gray-500 text-lg text-white">Choose status</summary>
                         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-40">
                             <li onClick={() => handleFilter('all')}><a>All</a></li>
                             <li onClick={() => handleFilter('pending')}><a>pending</a></li>
@@ -141,6 +174,7 @@ const MyParcels = () => {
 
 
                 <div>
+                    {/* table */}
                     <div className="overflow-x-auto">
                         <table className="table">
 
@@ -156,6 +190,8 @@ const MyParcels = () => {
                                     <th>Booking Status</th>
                                     <th>UPDATE</th>
                                     <th>Cancel</th>
+                                    <th>review</th>
+                                    <th>pay</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -199,17 +235,7 @@ const MyParcels = () => {
                                                     </button>
 
                                             }
-                                            {/* {
-                                                item.status === 'pending' ? <> <button onClick={() => handleDeleteItem(item)}
-                                                    className="bg-red-400 p-2 rounded-md">cancel
 
-                                                </button></>
-                                                    :
-                                                    <button
-                                                        className="bg-red-400 p-2 rounded-md">cancel
-
-                                                    </button>
-                                            } */}
                                         </td>
                                         <td>
                                             {
@@ -224,15 +250,59 @@ const MyParcels = () => {
                                                     </button>
                                             }
                                         </td>
+                                        <td>
+                                            {
+                                                item.status === 'delivered' ? <> <button onClick={() => handleReview(item?.deliveryMenID
+                                                )}
+                                                    className="bg-purple-300 btn rounded-md">review
+
+                                                </button></>
+                                                    :
+                                                    <button disabled
+                                                        className="bg-purple-300 btn rounded-md">review
+
+                                                    </button>
+                                            }
+                                        </td>
+                                        <td>
+                                            {
+
+                                                <button
+                                                    className="bg-green-300 btn rounded-md">pay
+
+                                                </button>
+                                            }
+                                        </td>
                                     </tr>)
                                 }
 
                             </tbody>
 
                         </table>
-
-
                     </div>
+
+
+
+
+                    {/* modal */}
+                    <dialog ref={modalRef} id="my_modal_5"
+                        className="modal modal-bottom sm:modal-middle"
+                        onClick={handleModalClose}
+                    >
+                        <div
+                            className="modal-box"
+                            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+                        >
+                            {deliveryMenID && (
+                                <ModalReviewForm
+                                    id={deliveryMenID}
+                                    onClose={handleModalClose}
+                                >
+                                </ModalReviewForm>
+                            )}
+                        </div>
+                    </dialog>
+
 
                 </div>
 
