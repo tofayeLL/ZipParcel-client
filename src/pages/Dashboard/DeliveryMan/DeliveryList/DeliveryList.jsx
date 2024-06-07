@@ -88,12 +88,6 @@ const DeliveryList = () => {
 
 
 
-
-
-
-
-
-
     // handle cancel  parcel  button
     const handleCancelItem = (item) => {
         console.log(item);

@@ -92,13 +92,13 @@ const MyProfile = () => {
 
                     <div className="mt-4">
                         <label className="label">
-                            <span className="label-text lg:text-lg text-base font-semibold">Chnage Photo</span>
+                            <span className="label-text lg:text-lg text-base font-semibold">Upload Profile Picture</span>
                         </label>
                         <input type="file"  {...register("image")} className="file-input w-full max-w-xs " />
                     </div>
 
                     <div className="mt-6">
-                        <button type="submit" className="btn bg-orange-300 text-lg hover:text-orange-500 ">Save Change</button>
+                        <button type="submit" className="btn bg-orange-300 text-lg hover:text-orange-500 ">update</button>
                     </div>
 
 

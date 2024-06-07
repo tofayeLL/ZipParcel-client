@@ -42,8 +42,6 @@ const AllDeliveryMen = () => {
                                 <th>Phone Number</th>
                                 <th>Number of parcel delivered</th>
                                 <th>Average review</th>
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -68,11 +66,11 @@ const AllDeliveryMen = () => {
                                     }
 
                                     </td>
-                                    <td>0
-
+                                    <td>
+                                        {
+                                             item?.ratingAverage || 0
+                                        }
                                     </td>
-
-
 
                                 </tr>)
                             }

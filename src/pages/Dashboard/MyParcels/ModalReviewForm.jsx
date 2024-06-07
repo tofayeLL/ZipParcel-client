@@ -6,7 +6,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 const ModalReviewForm = ({ onClose, id }) => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
-    // console.log(id);
+    console.log(id);
 
 
 
@@ -34,10 +34,22 @@ const ModalReviewForm = ({ onClose, id }) => {
                 icon: 'success',
                 confirmButtonText: 'Cool'
             })
+
+            const res = await axiosPublic.post(`/reviewAverage/${id}`)
+            console.log('average review', res.data);
+
             form.reset();
             onClose();
 
+
         }
+        /* form.reset();
+        onClose(); */
+
+
+
+
+
 
         // form.reset();
     }
