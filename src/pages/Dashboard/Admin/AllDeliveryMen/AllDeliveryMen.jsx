@@ -63,7 +63,9 @@ const AllDeliveryMen = () => {
                                             item.phone
                                         }
                                     </td>
-                                    <td>0
+                                    <td>{
+                                        item?.delivered || 0
+                                    }
 
                                     </td>
                                     <td>0

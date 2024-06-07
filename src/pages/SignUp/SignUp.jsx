@@ -39,7 +39,8 @@ const SignUp = () => {
                     name: data.name,
                     email: data.email,
                     phone: data.phone,
-                    userType: data.userType
+                    userType: data.userType,
+                    // delivered: 0,
                 }
 
                 // console.log(userInfo);

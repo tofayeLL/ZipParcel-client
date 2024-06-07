@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const links = <>
         <li className="text-lg"><NavLink to={'/'}>Home</NavLink></li>
-        {getUser === 'Admin' ? <li className="text-lg"><NavLink to={'/dashboard/statistics'}>Dashboard</NavLink></li>
+        {getUser.userType === 'Admin' ? <li className="text-lg"><NavLink to={'/dashboard/statistics'}>Dashboard</NavLink></li>
             :
             <li className="text-lg"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
 

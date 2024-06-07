@@ -26,8 +26,9 @@ const DeliveryList = () => {
 
 
     // handle deliver  parcel  button
-    const handleDeliverItem = (item) => {
+    const handleDeliverItem = async (item) => {
         console.log(item);
+        console.log(getUser._id);
         Swal.fire({
             title: "Are you sure?",
             text: "You want to Delivery this Parcel!",
@@ -53,13 +54,31 @@ const DeliveryList = () => {
                         });
 
 
-                        // user refetch for delete from ui instantly
+                        const res = await axiosPublic.post(`/deliveryCount/${getUser._id}`)
+                        console.log(res.data);
+
+
+
                         refetch();
+
+                    }
+
+                    else if (!res.data.modifiedCount > 0) {
+                        //
+                        Swal.fire({
+                            title: "error!",
+                            text: `Already exist delivered`,
+                            icon: "error"
+                        });
 
                     }
                 }
 
+
+
             })
+
+
 
 
     }

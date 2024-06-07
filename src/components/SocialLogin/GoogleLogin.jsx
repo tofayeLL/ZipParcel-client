@@ -24,7 +24,8 @@ const GoogleLogin = () => {
                 const userInfo = {
                     name: result.user?.displayName,
                     email: result.user?.email,
-                    userType: 'User'
+                    userType: 'User',
+                    // delivered: 0,
 
                 }
 
