@@ -21,7 +21,7 @@ const MyReviews = () => {
 
     })
 
-    console.log(myAllReviews)
+    // console.log(myAllReviews)
 
 
     return (

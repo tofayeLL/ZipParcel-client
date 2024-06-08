@@ -38,6 +38,7 @@ const SignUp = () => {
                 const userInfo = {
                     name: data.name,
                     email: data.email,
+                    photo: data.photoURL,
                     phone: data.phone,
                     userType: data.userType,
                     // delivered: 0,

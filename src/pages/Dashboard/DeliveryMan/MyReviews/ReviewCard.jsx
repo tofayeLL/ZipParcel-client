@@ -11,7 +11,7 @@ const ReviewCard = ({ myReview }) => {
         <section>
 
             <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-xl">
-                <div className="flex justify-between gap-10 p-4">
+                <div className="flex justify-between lg:gap-10 gap-2 p-4">
                     <div className="flex flex-col items-start space-y-4">
                         <div>
                             <img src={userImage} alt="" className="object-cover w-12 h-12 rounded-full bg-gray-500" />
@@ -21,13 +21,13 @@ const ReviewCard = ({ myReview }) => {
                             <span className="text-xs ">{reviewDate.slice(0, 10)}</span>
                         </div>
                     </div>
-                    <div className="flex  items-center   text-yellow-500">
+                    <div className="flex  items-center gap-1   text-orange-600">
                         <span className="text-xl font-bold">  <Rating
                             style={{ maxWidth: 90 }}
                             value={rating}
 
                         /></span>
-                        <span>{rating}</span>
+                        <span className='font-semibold text-orange-600'>{rating}</span>
                     </div>
 
                 </div>

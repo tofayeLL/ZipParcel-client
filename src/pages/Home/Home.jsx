@@ -1,5 +1,6 @@
 import Banner from "./Banner/Banner";
 import Featured from "./Featured/Featured";
+import TopDeliveryMen from "./TopDeliveryMen/TopDeliveryMen";
 
 
 const Home = () => {
@@ -11,6 +12,9 @@ const Home = () => {
 
             <div className="my-20">
                 <Featured></Featured>
+            </div>
+            <div className="my-20">
+                <TopDeliveryMen></TopDeliveryMen>
             </div>
 
         </section>
