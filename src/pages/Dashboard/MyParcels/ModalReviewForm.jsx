@@ -25,7 +25,7 @@ const ModalReviewForm = ({ onClose, id }) => {
         const review = { userName, userImage, feedback, deliveryMenID, rating, reviewDate }
         console.log(review);
 
-        const res = await axiosPublic.post('/userReview', review)
+        const res = await axiosPublic.post('/userReview', review);
         console.log(res.data);
         if (res.data.insertedId) {
             Swal.fire({

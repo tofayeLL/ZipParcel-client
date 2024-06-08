@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import useUserRole from "../../../../hooks/useUserRole";
+import ReviewCard from "./ReviewCard";
+
 
 
 const MyReviews = () => {
@@ -22,14 +24,19 @@ const MyReviews = () => {
     console.log(myAllReviews)
 
 
-
-
-
-
-
     return (
         <div>
-            <h1>from my reviews</h1>
+            <h1>from my reviews: {myAllReviews.length}</h1>
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+                {
+                    myAllReviews.map(myReview => <ReviewCard
+                        myReview={myReview}
+                        key={myReview._id}></ReviewCard>)
+
+                }
+            </div>
+
+
 
         </div>
     );
