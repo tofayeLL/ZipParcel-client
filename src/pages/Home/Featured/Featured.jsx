@@ -12,6 +12,8 @@ import CountUp from 'react-countup';
 const Featured = () => {
     const axiosPublic = useAxiosPublic();
 
+
+    //TOTAL PARCEL BOOKED
     const { data: allBookParcels } = useQuery({
         queryKey: ['totalParcelBooked'],
         queryFn: async () => {
@@ -25,7 +27,7 @@ const Featured = () => {
 
 
 
-
+    //TOTAL CUSTOMER
     const { data: allUsers } = useQuery({
         queryKey: ['totalRegisterUser'],
         queryFn: async () => {
@@ -39,6 +41,7 @@ const Featured = () => {
 
 
 
+    // TOTAL PARCEL DELIVERY
     const { data: totalDelivery } = useQuery({
         queryKey: ['totalDelivered'],
         queryFn: async () => {
@@ -130,7 +133,6 @@ const Featured = () => {
 
 
             <div>
-
 
                 <section className="p-6 my-6 bg-white shadow-md text-gray-100">
                     <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-3">
