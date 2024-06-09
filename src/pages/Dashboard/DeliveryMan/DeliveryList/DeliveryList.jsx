@@ -2,6 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import useUserRole from "../../../../hooks/useUserRole";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useRef, useState } from "react";
+import ViewLocationModal from "./ViewLocationModal";
+
+import 'leaflet/dist/leaflet.css';
+
 
 
 const DeliveryList = () => {
@@ -9,8 +14,6 @@ const DeliveryList = () => {
     console.log(getUser._id);
 
     const axiosPublic = useAxiosPublic();
-
-
 
     const { data: deliveryLists, refetch } = useQuery({
         queryKey: ['myDeliveries', getUser?._id],
@@ -23,11 +26,9 @@ const DeliveryList = () => {
     console.log(deliveryLists);
 
 
-
-
     // handle deliver  parcel  button
     const handleDeliverItem = async (item) => {
-        console.log(item);
+        // console.log(item);
         console.log(getUser._id);
         Swal.fire({
             title: "Are you sure?",
@@ -90,7 +91,7 @@ const DeliveryList = () => {
 
     // handle cancel  parcel  button
     const handleCancelItem = (item) => {
-        console.log(item);
+        // console.log(item);
         Swal.fire({
             title: "Are you sure?",
             text: "You want to cancel this parcel Delivery!",
@@ -124,6 +125,40 @@ const DeliveryList = () => {
             })
 
     }
+
+
+
+
+
+    // -------view location button showing modal ------//
+
+
+    const [itemId, setItemId] = useState(null);
+    const modalRef = useRef();
+
+
+
+    // handle View Location button
+    const handleViewLocation = (item) => {
+
+        console.log(item);
+        setItemId(item);
+        modalRef.current.showModal();
+
+
+
+    }
+
+
+    // modal close
+    const handleModalClose = () => {
+        modalRef.current.close();
+        setItemId(null);
+
+
+    }
+
+
 
 
 
@@ -214,7 +249,7 @@ const DeliveryList = () => {
 
                                         </button>
 
-                                        <button
+                                        <button onClick={() => handleViewLocation(item)}
                                             className="bg-amber-400 p-2 text-xs rounded-md">View Location
 
                                         </button>
@@ -222,10 +257,6 @@ const DeliveryList = () => {
 
 
                                     </td>
-
-
-
-
 
                                 </tr>)
                             }
@@ -238,8 +269,33 @@ const DeliveryList = () => {
                 </div>
 
 
+                {/* --------modal----------- */}
+                <dialog ref={modalRef} id="my_modal_5"
+                    className="modal modal-bottom sm:modal-middle"
+                    onClick={handleModalClose}
+                >
+                    <div
+                        className="modal-box h-96  flex justify-center items-center flex-col "
+                        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+                    >
+                        {itemId && (
+                            <ViewLocationModal
+                                item={itemId}
+                                onClose={handleModalClose}
+                            >
+                            </ViewLocationModal>
+                        )}
+                    </div>
+                </dialog>
+
+
 
             </div>
+
+
+
+
+
 
 
 
