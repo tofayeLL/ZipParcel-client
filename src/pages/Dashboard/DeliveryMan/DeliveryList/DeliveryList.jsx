@@ -170,7 +170,7 @@ const DeliveryList = () => {
 
             <div>
 
-
+                {/* ------Table------ */}
                 <div className="overflow-x-auto">
                     <table className="table">
 
@@ -269,6 +269,10 @@ const DeliveryList = () => {
                 </div>
 
 
+
+
+
+
                 {/* --------modal----------- */}
                 <dialog ref={modalRef} id="my_modal_5"
                     className="modal modal-bottom sm:modal-middle"
@@ -289,16 +293,8 @@ const DeliveryList = () => {
                 </dialog>
 
 
-
+                
             </div>
-
-
-
-
-
-
-
-
 
         </div>
     );

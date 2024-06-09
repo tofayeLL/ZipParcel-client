@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 
 const AllUsers = () => {
@@ -45,7 +46,7 @@ const AllUsers = () => {
         const res = await axiosPublic.patch(`/makeAdmin/${item.userEmail}`)
         // console.log(res.data);
         if (res.data.modifiedCount > 0) {
-            
+
 
             Swal.fire({
                 title: 'Success!',
@@ -58,6 +59,29 @@ const AllUsers = () => {
 
         }
     }
+
+
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const usersPerPage = 5;
+
+    const totalPages = Math.ceil(allUsers.length / usersPerPage);
+
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentUsers = allUsers.slice(indexOfFirstUser, indexOfLastUser);
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(prevPage => prevPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(prevPage => prevPage - 1);
+        }
+    };
 
 
 
@@ -87,7 +111,7 @@ const AllUsers = () => {
                         </thead>
                         <tbody>
                             {
-                                allUsers.map((item, index) => <tr key={item._id}>
+                                currentUsers.map((item, index) => <tr key={item._id}>
                                     <th>
                                         <p>{index + 1}</p>
                                     </th>
@@ -146,6 +170,30 @@ const AllUsers = () => {
                     </table>
 
 
+                </div>
+
+
+
+                {/* pagination */}
+
+                <div className="flex justify-between mt-4">
+                    <button
+                        onClick={handlePrevPage}
+                        disabled={currentPage === 1}
+                        className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                    >
+                        Previous
+                    </button>
+                    <span>
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button
+                        onClick={handleNextPage}
+                        disabled={currentPage === totalPages}
+                        className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                    >
+                        Next
+                    </button>
                 </div>
 
             </div>
