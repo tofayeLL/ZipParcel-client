@@ -41,7 +41,7 @@ const SignUp = () => {
                     photo: data.photoURL,
                     phone: data.phone,
                     userType: data.userType,
-                    // delivered: 0,
+
                 }
 
                 // console.log(userInfo);
@@ -73,11 +73,12 @@ const SignUp = () => {
     return (
         <section>
 
+            <div className="flex flex-col  justify-center items-center bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/fH0S3yh/parcel5.jpg)] bg-center bg-cover object-cover object-center  ">
 
-            <div className="flex flex-col items-center my-10">
+           
 
 
-                <div className="card shrink-0 w-full max-w-lg py-6 shadow-2xl bg-base-100 ">
+                <div className="card shrink-0 w-full max-w-lg py-6 shadow-2xl bg-base-100 my-8 ">
                     <div className=" mx-auto text-orange-400">
                         <h1 className="lg:text-4xl text-xl font-bold ">Create an account</h1>
                     </div>
@@ -85,7 +86,7 @@ const SignUp = () => {
 
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text font-semibold">User Name</span>
                             </label>
                             <input type="text"   {...register("name", { required: true })} name="name" placeholder="Your Name" className="input input-bordered" />
                             {errors.name && <span className='text-red-400'>Name field is required</span>}
@@ -93,7 +94,7 @@ const SignUp = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Photo URL</span>
+                                <span className="label-text font-semibold">Photo URL</span>
                             </label>
                             <input type="text"   {...register("photoURL", { required: true })} name="photoURL" placeholder="photoURL" className="input input-bordered" />
                             {errors.name && <span className='text-red-400'>photoURL field is required</span>}
@@ -103,21 +104,21 @@ const SignUp = () => {
 
 
                         <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
+                            <label className="label font-semibold">
+                                <span className="label-text">User Email</span>
                             </label>
                             <input type="email"    {...register("email", { required: true })} name="email" placeholder="Your Email" className="input input-bordered" />
                             {errors.email && <span className='text-red-400'>Email field is required</span>}
                         </div>
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label font-semibold">
                                 <span className="label-text">Phone Number</span>
                             </label>
                             <input type="phone"    {...register("phone", { required: true })} name="phone" placeholder="Your Number" className="input input-bordered" />
                             {errors.phone && <span className='text-red-400'>phone field is required</span>}
                         </div>
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label font-semibold">
                                 <span className="label-text">Password</span>
                             </label>
                             <div className="relative">
@@ -151,7 +152,7 @@ const SignUp = () => {
                         <div className="form-control" required>
 
                             <label className="label">
-                                <span className="label-text lg:text-lg text-base font-semibold">UserType</span>
+                                <span className="label-text font-semibold">UserType</span>
                             </label>
 
                             <select required defaultValue="" name="userType" {...register("userType", { required: true })}
@@ -169,7 +170,12 @@ const SignUp = () => {
 
 
                         <div className="form-control mt-6">
-                            <input className="btn bg-orange-400" type="submit" value="Sign up" />
+                            <input className="btn hover:text-orange-400 text-white text-xl w-full bg-orange-400" type="submit" value="Sign up" />
+
+                        </div>
+                        <div className="flex flex-col w-full border-opacity-50 ">
+
+                            <div className="divider">Login with social accounts</div>
 
                         </div>
 
@@ -180,7 +186,7 @@ const SignUp = () => {
 
 
                         <div className="text-center " >
-                            <p className="font-medium mt-6 lg:text-base text-sm mr-2">Do not have an account ?  Please <Link to={'/login'} className="btn-active text-orange-600 btn-link">Login</Link></p>
+                            <p className="font-medium mt-6 lg:text-base text-sm mr-2">have an account ?  Please <Link to={'/login'} className="btn-active text-orange-600 btn-link">Login</Link></p>
                         </div>
 
                     </form>
@@ -190,7 +196,12 @@ const SignUp = () => {
 
 
 
+         
+
+
             </div>
+
+
 
 
 

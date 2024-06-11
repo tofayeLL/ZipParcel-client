@@ -6,6 +6,9 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleLogin from "../../components/SocialLogin/GoogleLogin";
 
+// aos
+
+
 
 
 const Login = () => {
@@ -49,7 +52,7 @@ const Login = () => {
     return (
 
         <section>
-            <div className="flex flex-col  justify-center items-center bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/PryLDHr/login.jpg)] bg-center bg-cover object-cover object-center ">
+            <div className="flex flex-col  justify-center items-center bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/vBCMK7m/parcel2.jpg)] bg-center bg-cover object-cover object-center ">
 
 
                 <div className="flex flex-col justify-center  w-full max-w-lg  mx-auto space-y-4 my-6 bg-white shadow-xl lg:px-0 px-5  lg:py-12 py-6 rounded-2xl" >

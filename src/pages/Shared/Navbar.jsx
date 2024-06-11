@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from '../../../public/logo8.png'
+import logo from '../../assets/images/logo6 (2).png'
 import { IoMdNotificationsOutline } from "react-icons/io";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -47,14 +47,14 @@ const Navbar = () => {
             <li className="text-lg"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
 
         }
-        <li className="text-lg"><NavLink to={'/order'}>Ordered</NavLink></li>
-        <li className="text-lg"><NavLink to={'/testBoard'}>Secret</NavLink></li>
+     {/*    <li className="text-lg"><NavLink to={'/order'}>Ordered</NavLink></li>
+        <li className="text-lg"><NavLink to={'/testBoard'}>Secret</NavLink></li> */}
 
         <li>
             <button className="btn btn-ghost btn-circle">
                 <div className="indicator">
                     <span className="text-3xl lg:text-white md:text-white text-black">< IoMdNotificationsOutline ></IoMdNotificationsOutline></span>
-                    <span className="badge badge-sm bg-slate-200  text-orange-500 p-2 font-bold indicator-item text-base">4</span>
+                    <span className="badge badge-sm bg-slate-200  text-orange-500 p-2 font-bold indicator-item text-base">0</span>
                 </div>
             </button>
         </li>
