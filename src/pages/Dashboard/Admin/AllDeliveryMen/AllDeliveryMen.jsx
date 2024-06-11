@@ -23,7 +23,7 @@ const AllDeliveryMen = () => {
 
     return (
         <div>
-            <h1>From all delivery men: {deliveryMens.length}</h1>
+            {/* <h1>From all delivery men: {deliveryMens.length}</h1> */}
 
 
 

@@ -26,8 +26,8 @@ const MyReviews = () => {
 
     return (
         <div>
-            <h1>from my reviews: {myAllReviews.length}</h1>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+            {/* <h1>from my reviews: {myAllReviews.length}</h1> */}
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 py-2">
                 {
                     myAllReviews.map(myReview => <ReviewCard
                         myReview={myReview}

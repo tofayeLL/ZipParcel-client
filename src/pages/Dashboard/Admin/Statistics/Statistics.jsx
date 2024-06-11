@@ -136,7 +136,7 @@ const Statistics = () => {
             </div>
  */}
             <div>
-                <Chart options={chartOptions} series={chartSeries} type="bar" width={500} height={700} />
+                <Chart options={chartOptions} series={chartSeries} type="bar" width={500} height={600} />
 
 
             </div>

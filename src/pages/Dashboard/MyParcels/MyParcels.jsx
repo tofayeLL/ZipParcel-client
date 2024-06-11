@@ -38,6 +38,8 @@ const MyParcels = () => {
 
     // console.log('filter', filterParcels);
 
+    console.log(bookingParcels);
+
 
     const handleCancelItem = (item) => {
         // console.log(item);
@@ -144,12 +146,7 @@ const MyParcels = () => {
     return (
         <section>
             <div>
-
-
-
-
-
-                <h1>allBooking serces: {bookingParcels.length}</h1>
+                {/* <h1>allBooking serces: {bookingParcels.length}</h1> */}
 
                 <div className="flex flex-col gap-3  items-center mb-4 bg-gray-300 py-10">
                     <div>

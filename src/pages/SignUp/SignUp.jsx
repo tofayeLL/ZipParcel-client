@@ -158,7 +158,7 @@ const SignUp = () => {
                                 className="select select-bordered w-full ">
                                 <option disabled value="">Choose a UserType</option>
                                 <option value="User">User</option>
-                                <option value="Admin">Admin</option>
+                                {/* <option value="Admin">Admin</option> */}
                                 <option value="DeliveryMen">DeliveryMen</option>
 
                             </select>

@@ -11,7 +11,7 @@ import 'leaflet/dist/leaflet.css';
 
 const DeliveryList = () => {
     const { getUser } = useUserRole();
-    console.log(getUser._id);
+    // console.log(getUser._id);
 
     const axiosPublic = useAxiosPublic();
 
@@ -23,7 +23,7 @@ const DeliveryList = () => {
             return data.data;
         }, initialData: []
     })
-    console.log(deliveryLists);
+    // console.log(deliveryLists);
 
 
     // handle deliver  parcel  button
@@ -166,7 +166,7 @@ const DeliveryList = () => {
 
     return (
         <div>
-            <h1>from delivery list:{deliveryLists.length}</h1>
+            {/* <h1>from delivery list:{deliveryLists.length}</h1> */}
 
             <div>
 

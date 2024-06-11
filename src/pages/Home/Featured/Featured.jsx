@@ -144,7 +144,7 @@ const Featured = () => {
                                     <p className="text-5xl font-semibold leading-none pb-2" id="parcelBooked"   ></p>
                                     <span className='text-5xl font-semibold leading-none pb-2'>
                                         <CountUp end={totalParcelBooked} duration={4} />
-                                        M +</span>
+                                       {/*  M + */}</span>
                                 </div>
 
                                 <p className="capitalize text-xl mt-4">Parcel Booked</p>
@@ -158,7 +158,7 @@ const Featured = () => {
                                     <p className="text-5xl font-semibold leading-none pb-2" id="delivery"   ></p>
                                     <span className='text-5xl font-semibold leading-none pb-2'>
                                         <CountUp end={totalParcelDelivery} duration={4} />
-                                        M +</span>
+                                        {/* M + */}</span>
 
                                 </div>
                                 <p className="capitalize text-xl mt-4"> Parcel Delivered</p>
@@ -172,7 +172,7 @@ const Featured = () => {
                                     <p className="text-5xl font-semibold leading-none pb-2" id="customers"   ></p>
                                     <span className='text-5xl font-semibold leading-none pb-2'>
                                         <CountUp end={totalCustomer} duration={4} />
-                                        M +</span>
+                                        {/* M + */}</span>
 
                                 </div>
                                 <p className="capitalize mt-4 text-xl">Customers</p>

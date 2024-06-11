@@ -10,7 +10,7 @@ const ReviewCard = ({ myReview }) => {
     return (
         <section>
 
-            <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 bg-white shadow-xl">
+            <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y border-[1px] border-orange-300 rounded-sm divide-gray-700 bg-white  shadow-md ">
                 <div className="flex justify-between lg:gap-10 gap-2 p-4">
                     <div className="flex flex-col items-start space-y-4">
                         <div>
@@ -34,7 +34,7 @@ const ReviewCard = ({ myReview }) => {
 
                 <div className="p-4 space-y-2 text-sm text-gray-400">
                     <p>{feedback}</p>
-                    <p>Donec eget ultricies diam, eu molestie arcu. Etiam nec lacus eu mauris cursus venenatis. Maecenas gravida urna vitae accumsan feugiat. Vestibulum commodo, ante sit urna purus rutrum sem.</p>
+                   {/*  <p>Donec eget ultricies diam, eu molestie arcu. Etiam nec lacus eu mauris cursus venenatis. Maecenas gravida urna vitae accumsan feugiat. Vestibulum commodo, ante sit urna purus rutrum sem.</p> */}
                 </div>
             </div>
 

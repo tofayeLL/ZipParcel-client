@@ -10,13 +10,13 @@ const Dashboard = () => {
     // console.log(getUser);
 
     // For Check user Admin
-    // const admin = getUser?.userType === 'Admin';
+    const admin = getUser?.userType === 'Admin';
 
     // For Check user User
-    // const user = getUser?.userType === 'User';
+    const user = getUser?.userType === 'User';
 
     // For Check user DeliveryMen
-    // const deliveryMen = getUser?.userType === 'DeliveryMen';
+    const deliveryMen = getUser?.userType === 'DeliveryMen';
 
 
 
@@ -31,14 +31,14 @@ const Dashboard = () => {
 
 
                 {/* pages */}
-                <div className="w-40  min-h-screen bg-amber-400">
-                    <ul className="menu space-y-1">
+                <div className="w-48  min-h-screen bg-amber-400">
+                    <ul className="menu space-y-1 w-44">
 
 
                         {/* Admin */}
 
                         {
-                            /* admin && */ <>
+                            admin && <>
                                 <li>
                                     <NavLink to={'/dashboard/allParcel'}><span><FaBook></FaBook> </span>All Parcels</NavLink>
                                 </li>
@@ -58,15 +58,15 @@ const Dashboard = () => {
 
                         {/* normal user */}
                         {
-                           /*  user && */ <>
+                            user && <>
 
-                                <li className="text-xs" >
+                                <li  >
                                     <NavLink to={'/dashboard/bookParcel'}><span><FaBook></FaBook> </span>Book a Parcel</NavLink>
                                 </li>
-                                <li className="text-xs">
+                                <li >
                                     <NavLink to={'/dashboard/myParcel'}><span><FaBook></FaBook> </span>My Parcels</NavLink>
                                 </li>
-                                <li className="text-xs">
+                                <li >
                                     <NavLink to={'/dashboard/myProfile'}><span><FaBook></FaBook> </span>My Profile</NavLink>
                                 </li>
                             </>
@@ -76,12 +76,12 @@ const Dashboard = () => {
 
                         {/* delivery men */}
                         {
-                           /*  deliveryMen && */ <>
+                            deliveryMen && <>
 
-                                <li className="text-xs ">
+                                <li >
                                     <NavLink to={'/dashboard/deliveryList'}><span><FaBook></FaBook> </span>My Delivery List</NavLink>
                                 </li>
-                                <li className="text-xs">
+                                <li >
                                     <NavLink to={'/dashboard/myReviews'}><span><FaBook></FaBook> </span>My Reviews</NavLink>
                                 </li>
                             </>

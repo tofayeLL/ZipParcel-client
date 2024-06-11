@@ -88,14 +88,14 @@ const AllUsers = () => {
 
     return (
         <div>
-            <h1>from all users: {allUsers.length}</h1>
+            {/* <h1>from all users: {allUsers.length}</h1> */}
 
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">
 
-                        <thead className="bg-gray-300">
-                            <tr className="uppercase">
+                        <thead className="bg-gray-300 ">
+                            <tr className="uppercase ">
                                 <th>
                                 </th>
                                 <th>User’s Name</th>
@@ -123,7 +123,7 @@ const AllUsers = () => {
 
                                     <td>
                                         {
-                                            item?.userPhone
+                                            item?.userPhone || 965432109885
                                         }
                                     </td>
                                     <td>

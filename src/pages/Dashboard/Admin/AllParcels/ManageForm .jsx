@@ -21,7 +21,7 @@ const ManageForm = ({ itemId, onClose }) => {
 
         }, initialData: []
     })
-    console.log(deliveryMens);
+    // console.log(deliveryMens);
 
 
 

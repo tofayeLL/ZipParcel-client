@@ -26,7 +26,7 @@ const TopDeliveryMen = () => {
 
     return (
         <div>
-            <div className="container mx-auto ">
+            <div className="container mx-auto" >
 
 
 
@@ -34,11 +34,11 @@ const TopDeliveryMen = () => {
                     <h1 className="text-4xl font-bold text-orange-500">Top Delivery Men</h1>
                 </div>
 
-                <div className="grid lg:grid-cols-3 md:grid-cols-2 gird-cols-1 ">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 gird-cols-1 gap-6 ">
                     {
-                        topDeliveryMens.map(deliveryMen => <div key={deliveryMen._id}>
+                        topDeliveryMens.map(deliveryMen => <div key={deliveryMen._id} className=" ">
 
-                            <div className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
+                            <div className="lg:max-w-sm  rounded-md shadow-xl  dark:bg-gray-50 dark:text-gray-800">
                                 <img src={deliveryMen?.photo} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                                 <div className="flex flex-col justify-between p-6 space-y-8">
                                     <div className="space-y-4">

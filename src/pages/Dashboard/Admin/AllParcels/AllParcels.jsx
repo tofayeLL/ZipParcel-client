@@ -19,8 +19,8 @@ const AllParcels = () => {
 
         }, initialData: []
     })
+    console.log(bookedParcels);
 
-    /*          const parcel = { userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone, status, bookingDate, approximateDate } */
 
 
     // --------Modal--------//
@@ -52,7 +52,7 @@ const AllParcels = () => {
         const dateFrom = form.dateFrom.value;
         const dateTo = form.dateTo.value;
         const searchDate = { dateFrom, dateTo }
-        console.log(searchDate);
+        // console.log(searchDate);
 
         const res = await axiosPublic.post('/search', searchDate)
         // console.log(res.data);
@@ -69,10 +69,10 @@ const AllParcels = () => {
     return (
         <div>
 
-            <h1>from All parcels: {bookedParcels.length}</h1>
+            {/* <h1>from All parcels: {bookedParcels.length}</h1> */}
 
             {/* implement search by depends on request date */}
-            <div className="bg-gray-300 py-6 mb-4 text-center rounded-md ">
+            <div className="bg-gray-300 py-6 mb-4 text-center rounded-sm ">
                 <div>
                     <h1 className="text-3xl font-semibold text-orange-600">Search Parcel Request form Users</h1>
                 </div>
@@ -116,12 +116,12 @@ const AllParcels = () => {
                     <div className="overflow-x-auto">
                         <table className="table">
 
-                            <thead className="bg-gray-300">
-                                <tr className="uppercase">
+                            <thead className="bg-gray-300 ">
+                                <tr className="uppercase ">
                                     <th>
                                     </th>
-                                    <th>User’s Name</th>
-                                    <th>User’s Phone</th>
+                                    <th>Booking User’s Name</th>
+                                    <th>Booking User’s Phone</th>
                                     <th>Booking Date</th>
                                     <th>Requested Delivery Date</th>
                                     <th>Cost</th>

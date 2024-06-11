@@ -16,6 +16,8 @@ import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
 import AllDeliveryMen from "../pages/Dashboard/Admin/AllDeliveryMen/AllDeliveryMen";
 import Statistics from "../pages/Dashboard/Admin/Statistics/Statistics";
 import UpdateParcel from "../pages/Dashboard/MyParcels/UpdateParcel";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+
 
 
 
@@ -26,6 +28,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -38,8 +41,15 @@ export const router = createBrowserRouter([
         ]
 
     },
+
+
+    // login registration routes
     { path: '/login', element: <Login> </Login> },
     { path: '/signup', element: <SignUp></SignUp> },
+
+
+
+
 
 
 
@@ -99,7 +109,14 @@ export const router = createBrowserRouter([
             },
 
         ]
-    }
+    },
+
+
+
+
+
+
+
 
 ]);
 
