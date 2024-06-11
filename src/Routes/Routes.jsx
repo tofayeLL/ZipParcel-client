@@ -101,11 +101,11 @@ export const router = createBrowserRouter([
             // deliverymen routes
             {
                 path: 'deliveryList',
-                element: <DeliveryList></DeliveryList>
+                element: <PrivateRoute><DeliveryList></DeliveryList></PrivateRoute>
             },
             {
                 path: 'myReviews',
-                element: <MyReviews></MyReviews>
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             },
 
         ]
