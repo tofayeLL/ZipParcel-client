@@ -65,7 +65,7 @@ const MyProfile = () => {
                     <h1 className="text-2xl   font-semibold">Update your profile</h1>
                 </div>
                 <div className="mt-4">
-                    <img src={user?.photoURL} alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
+                    <img src={user?.photoURL} alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square object-cover object-center" />
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} >
