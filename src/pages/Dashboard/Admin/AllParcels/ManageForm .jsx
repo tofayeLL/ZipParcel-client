@@ -8,7 +8,7 @@ const ManageForm = ({ itemId, onClose }) => {
     /*  const {bookingParcels} = use */
 
 
-    console.log(itemId);
+    // console.log(itemId);
 
     const axiosPublic = useAxiosPublic();
 
@@ -37,11 +37,11 @@ const ManageForm = ({ itemId, onClose }) => {
         const status = 'on the way';
 
         const updateBookedInfo = { approximateDate, deliveryMenID, status }
-        console.log(updateBookedInfo, itemId);
+        // console.log(updateBookedInfo, itemId);
 
 
         const res = await axiosPublic.put(`/manageBooked/${itemId}`, updateBookedInfo)
-        console.log(res.data);
+        // console.log(res.data);
 
         if (res.data.modifiedCount > 0) {
             // show success popup

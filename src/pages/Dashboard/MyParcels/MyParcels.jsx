@@ -58,7 +58,7 @@ const MyParcels = () => {
                 if (result.isConfirmed) {
                     const status = 'cancelled'
                     const res = await axiosPublic.patch(`/cancelParcel/${item._id}`, { status });
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.modifiedCount > 0) {
 
                         Swal.fire({
@@ -123,7 +123,7 @@ const MyParcels = () => {
 
     // handle review button
     const handleReview = (id) => {
-        console.log(id);
+        // console.log(id);
         setDeliveryMenID(id);
         modalRef.current.showModal();
     }
@@ -150,7 +150,7 @@ const MyParcels = () => {
 
                 <div className="flex flex-col gap-3  items-center mb-4 bg-gray-300 py-10">
                     <div>
-                        <h1 className="text-3xl font-semibold text-orange-600">Filter Your Delivery Status by category</h1>
+                        <h1 className="text-3xl font-semibold text-orange-600">Filter Your Booking By Status </h1>
                     </div>
                     <details className="dropdown">
                         <summary className="m-1 btn bg-gray-500 text-lg text-white">Choose status</summary>
@@ -283,11 +283,11 @@ const MyParcels = () => {
 
                     {/* modal */}
                     <dialog ref={modalRef} id="my_modal_5"
-                        className="modal modal-bottom sm:modal-middle"
+                        className="modal modal-top sm:modal-middle "
                         onClick={handleModalClose}
                     >
                         <div
-                            className="modal-box"
+                            className="modal-box  "
                             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
                         >
                             {deliveryMenID && (

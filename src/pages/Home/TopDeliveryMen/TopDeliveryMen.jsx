@@ -3,6 +3,11 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaRegStar } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 
+// aos package
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 
 const TopDeliveryMen = () => {
     const axiosPublic = useAxiosPublic();
@@ -11,12 +16,21 @@ const TopDeliveryMen = () => {
         queryKey: ['topDelivered'],
         queryFn: async () => {
             const res = await axiosPublic.get('/topDelivered');
-            console.log(res.data);
+            // console.log(res.data);
             return res.data;
         }, initialData: []
     })
 
-    console.log(topDeliveryMens);
+    // console.log(topDeliveryMens);
+
+
+
+    // Aos
+    useEffect(() => {
+        AOS.init({
+          duration : 900
+        });
+      }, []);
 
 
 
@@ -31,18 +45,18 @@ const TopDeliveryMen = () => {
 
 
                 <div className="pb-10">
-                    <h1 className="text-4xl font-bold text-orange-500">Top Delivery Men</h1>
+                    <h1 className="lg:text-4xl text-2xl font-bold text-orange-500">Top Delivery Men</h1>
                 </div>
 
-                <div className="grid lg:grid-cols-3 md:grid-cols-2 gird-cols-1 gap-6 ">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 gird-cols-1 gap-6 " >
                     {
-                        topDeliveryMens.map(deliveryMen => <div key={deliveryMen._id} className=" ">
+                        topDeliveryMens.map(deliveryMen => <div key={deliveryMen._id}  data-aos="zoom-in-down">
 
                             <div className="lg:max-w-sm  rounded-md shadow-xl  dark:bg-gray-50 dark:text-gray-800">
                                 <img src={deliveryMen?.photo} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
                                 <div className="flex flex-col justify-between p-6 space-y-8">
                                     <div className="space-y-4">
-                                        <h2 className="text-3xl font-semibold tracking-wide">{deliveryMen.name}</h2>
+                                        <h2 className="lg:text-3xl text-2xl font-semibold tracking-wide">{deliveryMen.name}</h2>
 
                                         <div className="flex justify-between items-center">
 

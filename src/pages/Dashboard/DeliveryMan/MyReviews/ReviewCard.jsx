@@ -32,7 +32,7 @@ const ReviewCard = ({ myReview }) => {
 
                 </div>
 
-                <div className="p-4 space-y-2 text-sm text-gray-400">
+                <div className="p-4 space-y-2 text-sm opacity-90">
                     <p>{feedback}</p>
                    {/*  <p>Donec eget ultricies diam, eu molestie arcu. Etiam nec lacus eu mauris cursus venenatis. Maecenas gravida urna vitae accumsan feugiat. Vestibulum commodo, ante sit urna purus rutrum sem.</p> */}
                 </div>

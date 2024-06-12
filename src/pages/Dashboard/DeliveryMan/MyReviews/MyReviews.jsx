@@ -7,7 +7,7 @@ import ReviewCard from "./ReviewCard";
 
 const MyReviews = () => {
     const { getUser } = useUserRole();
-    console.log(getUser._id);
+    // console.log(getUser._id);
     const axiosPublic = useAxiosPublic()
 
 
@@ -15,7 +15,7 @@ const MyReviews = () => {
         queryKey: ['myReviews', getUser._id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/myReviews/${getUser._id}`)
-            console.log(res.data);
+            // console.log(res.data);
             return res.data
         }, initialData: []
 

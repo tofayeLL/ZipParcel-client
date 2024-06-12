@@ -8,6 +8,11 @@ import { useState } from "react";
 import GoogleLogin from "../../components/SocialLogin/GoogleLogin";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
+// aos package
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 
 const SignUp = () => {
     const [showPass, setShowPass] = useState(false);
@@ -25,8 +30,8 @@ const SignUp = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
-        console.log(data);
+        // console.log(data);
+        // console.log(data);
         createUser(data.email, data.password)
             .then((result) => {
                 console.log(result.user);
@@ -49,11 +54,11 @@ const SignUp = () => {
 
                 axiosPublic.post('/users', userInfo)
                     .then(data => {
-                        console.log(data.data);
+                        // console.log(data.data);
 
 
                         if (data.data.insertedId) {
-                            console.log('user added database successfully');
+                            // console.log('user added database successfully');
                             toast.success("Sign up Successfully");
                             reset();
                             navigate('/login')
@@ -64,21 +69,33 @@ const SignUp = () => {
 
             })
             .catch((error) => {
-                console.log(error.message);
+                // console.log(error.message);
                 toast.error(error.message.replace('auth/', ''));
             })
     }
 
 
+    // aos
+    useEffect(() => {
+        AOS.init({
+          duration : 700
+        });
+      }, []);
+
+
+
+
+
+
     return (
         <section>
 
-            <div className="flex flex-col  justify-center items-center bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/fH0S3yh/parcel5.jpg)] bg-center bg-cover object-cover object-center  ">
+            <div className="flex flex-col  justify-center items-center lg:py-20 py-12 bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/fH0S3yh/parcel5.jpg)] bg-center bg-cover object-cover object-center  ">
 
            
 
 
-                <div className="card shrink-0 w-full max-w-lg py-6 shadow-2xl bg-base-100 my-8 ">
+                <div className="card shrink-0 w-full max-w-lg py-6 shadow-2xl bg-base-100 my-8 " data-aos="zoom-in-down">
                     <div className=" mx-auto text-orange-400">
                         <h1 className="lg:text-4xl text-xl font-bold ">Create an account</h1>
                     </div>

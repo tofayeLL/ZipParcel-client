@@ -74,15 +74,15 @@ const Footer = () => {
                                 </ul>
                             </div>
                             <div className="space-y-3  ">
-                                <div className="uppercase text-lg font-semibold">Social media</div>
+                                <div className=" text-lg font-semibold">Social media</div>
                                 <div className="flex justify-start space-x-3">
-                                    <a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center p-1">
+                                    <a rel="noopener noreferrer" href="https://www.facebook.com" title="Facebook" className="flex items-center p-1">
                                         <FaFacebook className="w-7 h-7 fill-current"></FaFacebook>
                                     </a>
-                                    <a rel="noopener noreferrer" href="#" title="Twitter" className="flex items-center p-1">
+                                    <a rel="noopener noreferrer" href="https://x.com" title="Twitter" className="flex items-center p-1">
                                         <FaTwitter className="w-7 h-7 fill-current"></FaTwitter>
                                     </a>
-                                    <a rel="noopener noreferrer" href="#" title="Instagram" className="flex items-center p-1">
+                                    <a rel="noopener noreferrer" href="https://www.instagram.com/?hl=en" title="Instagram" className="flex items-center p-1">
                                         <FaInstagram className="w-7 h-7 fill-current"></FaInstagram>
                                     </a>
                                 </div>

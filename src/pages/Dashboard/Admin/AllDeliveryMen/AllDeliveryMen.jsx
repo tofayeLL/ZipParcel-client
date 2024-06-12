@@ -15,7 +15,8 @@ const AllDeliveryMen = () => {
 
         }, initialData: []
     })
-    console.log(deliveryMens);
+    
+    // console.log(deliveryMens);
 
 
 

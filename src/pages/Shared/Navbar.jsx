@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
     const { getUser } = useUserRole();
-    console.log(getUser)
+    // console.log(getUser)
 
     const { user, logOutUser } = useAuth();
     const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : 'light');
@@ -97,7 +97,7 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <a className="font-bold lg:text-4xl md:text-2xl flex items-center gap-2 "><span><img src={logo} alt="" className="w-10  lg:inline md:inline hidden text-orange-600" /></span><span className="text-orange-600"><span className="text-white">Zip</span>Parcel</span></a>
+                    <a className="font-bold lg:text-4xl md:text-2xl text-xl flex items-center gap-2 "><span><img src={logo} alt="" className="w-10  lg:inline md:inline hidden text-orange-600" /></span><span className="text-orange-600"><span className="text-white">Zip</span>Parcel</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 space-x-2">

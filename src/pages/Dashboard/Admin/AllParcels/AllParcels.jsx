@@ -74,7 +74,7 @@ const AllParcels = () => {
             {/* implement search by depends on request date */}
             <div className="bg-gray-300 py-6 mb-4 text-center rounded-sm ">
                 <div>
-                    <h1 className="text-3xl font-semibold text-orange-600">Search Parcel Request form Users</h1>
+                    <h1 className="text-3xl font-semibold text-orange-600">Search Users Parcel Request Date </h1>
                 </div>
                 <form onSubmit={handleRequestedDate} className="lg:w-[80%] w-full mx-auto space-y-5 rounded-lg mt-5 " >
 
@@ -178,7 +178,7 @@ const AllParcels = () => {
 
                     {/* modal */}
                     <dialog ref={modalRef} id="my_modal_5"
-                        className="modal modal-bottom sm:modal-middle"
+                        className="modal sm:modal-middle modal-top "
                         onClick={handleModalClose}
                     >
                         <div

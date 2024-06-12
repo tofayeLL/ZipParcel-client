@@ -1,9 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
 import Home from "../pages/Home/Home";
-import Login from "../pages/Login/Login";
-import SignUp from "../pages/SignUp/SignUp";
-import Secret from "../pages/Secret/Secret";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import BookParcel from "../pages/Dashboard/BookParcel/BookParcel";
@@ -17,6 +14,8 @@ import AllDeliveryMen from "../pages/Dashboard/Admin/AllDeliveryMen/AllDeliveryM
 import Statistics from "../pages/Dashboard/Admin/Statistics/Statistics";
 import UpdateParcel from "../pages/Dashboard/MyParcels/UpdateParcel";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
 
 
 
@@ -35,8 +34,12 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/secret',
-                element: <PrivateRoute><Secret></Secret></PrivateRoute>
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/signup',
+                element: <SignUp></SignUp>
             },
         ]
 
@@ -44,8 +47,8 @@ export const router = createBrowserRouter([
 
 
     // login registration routes
-    { path: '/login', element: <Login> </Login> },
-    { path: '/signup', element: <SignUp></SignUp> },
+    /*  { path: '/login', element: <Login> </Login> },
+     { path: '/signup', element: <SignUp></SignUp> }, */
 
 
 
@@ -90,7 +93,7 @@ export const router = createBrowserRouter([
             {
                 path: 'updateParcel/:id',
                 element: <PrivateRoute><UpdateParcel></UpdateParcel></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/updateParcel/${params.id}`)
+                loader: ({ params }) => fetch(`https://zip-parcel-server.vercel.app/updateParcel/${params.id}`)
             },
             {
                 path: 'myProfile',

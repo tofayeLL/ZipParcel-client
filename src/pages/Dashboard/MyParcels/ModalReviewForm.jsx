@@ -6,7 +6,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 const ModalReviewForm = ({ onClose, id }) => {
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
-    console.log(id);
+    // console.log(id);
 
 
 
@@ -23,10 +23,10 @@ const ModalReviewForm = ({ onClose, id }) => {
         const reviewDate = new Date();
 
         const review = { userName, userImage, feedback, deliveryMenID, rating, reviewDate }
-        console.log(review);
+        // console.log(review);
 
         const res = await axiosPublic.post('/userReview', review);
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
             Swal.fire({
                 title: 'Success!',

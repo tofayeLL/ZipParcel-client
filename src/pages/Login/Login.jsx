@@ -6,7 +6,10 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleLogin from "../../components/SocialLogin/GoogleLogin";
 
-// aos
+// aos package
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 
 
@@ -27,7 +30,7 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         //sign in user
         signInUser(email, password)
@@ -41,21 +44,31 @@ const Login = () => {
             })
 
             .catch((error) => {
-                console.log(error.message);
+                // console.log(error.message);
                 toast.error(error.message.replace('auth/', 'userEmail or password-').replace('-credential', ''));
             })
 
-        
+
     }
+
+
+
+
+    // Aos 
+    useEffect(() => {
+        AOS.init({
+            duration: 700
+        });
+    }, []);
 
 
     return (
 
         <section>
-            <div className="flex flex-col  justify-center items-center bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/vBCMK7m/parcel2.jpg)] bg-center bg-cover object-cover object-center ">
+            <div className="flex flex-col  justify-center items-center lg:py-20 py-12 bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/vBCMK7m/parcel2.jpg)] bg-center bg-cover object-cover object-center ">
 
 
-                <div className="flex flex-col justify-center  w-full max-w-lg  mx-auto space-y-4 my-6 bg-white shadow-xl lg:px-0 px-5  lg:py-12 py-6 rounded-2xl" >
+                <div className="flex flex-col justify-center  w-full max-w-lg  mx-auto space-y-4 my-6 bg-white shadow-xl lg:px-0 px-5  lg:py-12 py-6 rounded-2xl" data-aos="fade-down">
 
 
 
@@ -104,8 +117,8 @@ const Login = () => {
 
                     <div className="lg:w-[70%] w-full mx-auto" >
 
-                       {/*  <Link><button onClick={handleGoogleLogin} className="btn w-full bg-orange-400 text-white"><FaGoogle className="text-2xl" ></FaGoogle> <span className="text-lg">Login with Google</span></button></Link> */}
-                       <GoogleLogin></GoogleLogin>
+                        {/*  <Link><button onClick={handleGoogleLogin} className="btn w-full bg-orange-400 text-white"><FaGoogle className="text-2xl" ></FaGoogle> <span className="text-lg">Login with Google</span></button></Link> */}
+                        <GoogleLogin></GoogleLogin>
 
                     </div>
 
@@ -113,7 +126,7 @@ const Login = () => {
 
 
                     <div className="text-center " >
-                        <p className="font-medium mt-6 lg:text-base text-sm mr-2">Do not have an account ?  Please <Link to={'/signUp'} className="btn-active text-orange-600 btn-link">Register</Link></p>
+                        <p className="font-medium mt-6 lg:text-base text-sm mr-2">Do not have an account ?  Please <Link to={'/signUp'} className="btn-active text-orange-600 btn-link">Sign up</Link></p>
                     </div>
 
                 </div>

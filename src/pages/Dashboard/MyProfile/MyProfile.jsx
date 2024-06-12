@@ -24,7 +24,7 @@ const MyProfile = () => {
 
 
     const onSubmit = async (data) => {
-        console.log('from update page', data);
+        // console.log('from update page', data);
         // image upload to the image bb and then get an url then send url to the database
         const imageFile = { image: data.image[0] };
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -32,12 +32,12 @@ const MyProfile = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         const photo = res.data.data.display_url;
         const name = data.name;
-        console.log(photo)
-        console.log('from my profile',user, name)
+        // console.log(photo)
+        // console.log('from my profile',user, name)
 
 
         // update profile photo from firebase

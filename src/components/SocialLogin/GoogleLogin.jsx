@@ -33,7 +33,7 @@ const GoogleLogin = () => {
                 axiosPublic.post('/users', userInfo)
                     .then(data => {
                         console.log(data.data);
-                        console.log('login with google successfully');
+                        // console.log('login with google successfully');
                         toast.success("Login Successfully");
                         navigate(from, { replace: true });
                     })

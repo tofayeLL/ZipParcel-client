@@ -10,7 +10,7 @@ const UpdateParcel = () => {
     /*  const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = useLoaderData(); */
 
     const { _id, userName, userEmail, userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone } = item;
-    console.log(item);
+    // console.log(item);
     const axiosPublic = useAxiosPublic();
 
 
@@ -29,11 +29,11 @@ const UpdateParcel = () => {
         const parcelWeight = form.parcelWeight.value;
         const price = form.price.value;
         const updateParcel = { userPhone, parcelType, parcelWeight, deliveryAddress, requestedDate, latitudes, longitude, price, receiverName, receiverPhone }
-        console.log(updateParcel);
+        // console.log(updateParcel);
 
 
         const res = await axiosPublic.patch(`/bookedParcel/${_id}`, updateParcel)
-        console.log(res.data);
+        // console.log(res.data);
 
         if (res.data.modifiedCount > 0) {
             // show success popup
@@ -54,7 +54,7 @@ const UpdateParcel = () => {
 
     return (
         <section>
-            <h1>I am from update parcel page:{item._id} </h1>
+            {/* <h1>I am from update parcel page:{item._id} </h1> */}
 
             <div>
 

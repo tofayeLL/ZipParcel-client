@@ -5,6 +5,11 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import CountUp from 'react-countup';
 
+// aos package
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 
 
 
@@ -18,7 +23,7 @@ const Featured = () => {
         queryKey: ['totalParcelBooked'],
         queryFn: async () => {
             const res = await axiosPublic.get('/totalParcelBooked')
-            console.log(res.data);
+            // console.log(res.data);
             return res.data
         }, initialData: []
     })
@@ -32,7 +37,7 @@ const Featured = () => {
         queryKey: ['totalRegisterUser'],
         queryFn: async () => {
             const res = await axiosPublic.get('/totalRegisterUser')
-            console.log(res.data);
+            // console.log(res.data);
             return res.data
         }, initialData: []
     })
@@ -46,12 +51,21 @@ const Featured = () => {
         queryKey: ['totalDelivered'],
         queryFn: async () => {
             const res = await axiosPublic.get('/totalDelivered')
-            console.log(res.data);
+            // console.log(res.data);
             return res.data
         }, initialData: []
     })
     // console.log('total delivery',totalDelivery);
     const totalParcelDelivery = totalDelivery[0]?.totalDelivered;
+
+
+
+    // Aos
+    useEffect(() => {
+        AOS.init({
+          duration : 800
+        });
+      }, []);
 
 
 
@@ -65,7 +79,7 @@ const Featured = () => {
 
 
                 <div>
-                    <h1 className="text-5xl font-bold text-orange-500">Our Features</h1>
+                    <h1 className="lg:text-4xl text-2xl font-bold text-orange-500">Our Features</h1>
                 </div>
 
                 {/* card */}
@@ -73,7 +87,7 @@ const Featured = () => {
 
 
                     {/* card 1 */}
-                    <div className=" shadow-md my-6 border-[1px] border-orange-200 bg-white " >
+                    <div className=" shadow-md my-6 border-[1px] border-orange-200 bg-white " data-aos="fade-down" >
 
                         <div className="p-6 " >
                             <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500" />
@@ -82,7 +96,7 @@ const Featured = () => {
                         <div className="flex flex-col justify-between p-6 space-y-8" >
                             <div className="space-y-4" >
                                 <h2 className="lg:text-2xl text-xl font-semibold tracking-wide text-orange-500 ">Prove your delivery in full faster</h2>
-                                <p className=" ">Once the delivery is signed and scanned, zip-parcel will instantly send feedback on order status with an actual quantity of items and the delivery receipt.</p>
+                                <p className=" ">Once the delivery is signed and scanned, zip-parcel will instantly send feedback on order status with an actual quantity of items and the delivery date.</p>
 
                             </div>
 
@@ -90,7 +104,7 @@ const Featured = () => {
 
                     </div>
                     {/* card 2 */}
-                    <div className=" shadow-md my-6 border-[1px] border-orange-200 bg-white " >
+                    <div className=" shadow-md my-6 border-[1px] border-orange-200 bg-white "  data-aos="fade-up" >
 
                         <div className="p-6 " >
                             <img src={image2} alt="" className="object-cover object-center w-full  h-72 rounded-t-md  bg-gray-500" />
@@ -99,7 +113,7 @@ const Featured = () => {
                         <div className="flex flex-col justify-between p-6 space-y-8" >
                             <div className="space-y-4" >
                                 <h2 className="lg:text-2xl text-xl font-semibold tracking-wide text-orange-500 "> on-time delivery every time</h2>
-                                <p className=" ">Send SMS or email notifications with ETA and a driver tracking link to your customers to let them know when a courier is about to knock on the door.</p>
+                                <p className=" ">Send SMS or email notifications  and a driver tracking link to your customers to let them know when the parcel is about to knock on the door.</p>
 
                             </div>
 
@@ -108,7 +122,7 @@ const Featured = () => {
                     </div>
 
                     {/* card 3 */}
-                    <div className=" shadow-md my-6 border-[1px] border-orange-200 bg-white ">
+                    <div className=" shadow-md my-6 border-[1px] border-orange-200 bg-white " data-aos="fade-down">
 
                         <div className="p-6 " >
                             <img src={image3} alt="" className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500" />
@@ -137,42 +151,42 @@ const Featured = () => {
                 <section className="p-6 my-6 bg-white shadow-md text-gray-100">
                     <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-3">
                         {/* revenue */}
-                        <div className="flex flex-col justify-center items-center py-20 rounded-lg  bg-amber-500 text-gray-100">
+                        <div className="flex flex-col justify-center items-center py-20 rounded-lg  bg-amber-500 text-white">
 
                             <div className='text-center'>
                                 <div className='flex justify-center items-center'>
                                     <p className="text-5xl font-semibold leading-none pb-2" id="parcelBooked"   ></p>
                                     <span className='text-5xl font-semibold leading-none pb-2'>
                                         <CountUp end={totalParcelBooked} duration={4} />
-                                       {/*  M + */}</span>
+                                          +</span>
                                 </div>
 
                                 <p className="capitalize text-xl mt-4">Parcel Booked</p>
                             </div>
                         </div>
                         {/* menuItems */}
-                        <div className="flex flex-col justify-center items-center py-20 rounded-lg  bg-amber-500 text-gray-100">
+                        <div className="flex flex-col justify-center items-center py-20 rounded-lg  bg-amber-500 text-white">
 
                             <div className="">
                                 <div className='flex justify-center items-center'>
                                     <p className="text-5xl font-semibold leading-none pb-2" id="delivery"   ></p>
                                     <span className='text-5xl font-semibold leading-none pb-2'>
                                         <CountUp end={totalParcelDelivery} duration={4} />
-                                        {/* M + */}</span>
+                                          +</span>
 
                                 </div>
                                 <p className="capitalize text-xl mt-4"> Parcel Delivered</p>
                             </div>
                         </div>
                         {/* products */}
-                        <div className="flex flex-col justify-center items-center py-20 rounded-lg  bg-amber-500 text-gray-100">
+                        <div className="flex flex-col justify-center items-center py-20 rounded-lg  bg-amber-500 text-white">
 
                             <div className="text-center">
                                 <div className='flex justify-center items-center'>
                                     <p className="text-5xl font-semibold leading-none pb-2" id="customers"   ></p>
                                     <span className='text-5xl font-semibold leading-none pb-2'>
                                         <CountUp end={totalCustomer} duration={4} />
-                                        {/* M + */}</span>
+                                          +</span>
 
                                 </div>
                                 <p className="capitalize mt-4 text-xl">Customers</p>

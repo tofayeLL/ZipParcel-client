@@ -47,7 +47,7 @@ const BookParcel = () => {
 
 
         const res = await axiosPublic.post('/bookedParcel', parcel);
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
             Swal.fire({
                 title: 'Success!',

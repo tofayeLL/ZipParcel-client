@@ -21,9 +21,9 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 
 const ViewLocationModal = ({ onClose, item }) => {
-    console.log("modal item", item)
+    // console.log("modal item", item)
     return (
-        <div className="   ">
+        <div >
            
 
 

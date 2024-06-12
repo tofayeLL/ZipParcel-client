@@ -29,7 +29,7 @@ const DeliveryList = () => {
     // handle deliver  parcel  button
     const handleDeliverItem = async (item) => {
         // console.log(item);
-        console.log(getUser._id);
+        // console.log(getUser._id);
         Swal.fire({
             title: "Are you sure?",
             text: "You want to Delivery this Parcel!",
@@ -45,7 +45,7 @@ const DeliveryList = () => {
                 if (result.isConfirmed) {
                     const status = 'delivered';
                     const res = await axiosPublic.patch(`/deliverParcel/${item._id}`, { status });
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.modifiedCount > 0) {
 
                         Swal.fire({
@@ -106,7 +106,7 @@ const DeliveryList = () => {
                 if (result.isConfirmed) {
                     const status = 'cancelled'
                     const res = await axiosPublic.patch(`/cancelDelivery/${item._id}`, { status });
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.modifiedCount > 0) {
 
                         Swal.fire({
@@ -141,7 +141,7 @@ const DeliveryList = () => {
     // handle View Location button
     const handleViewLocation = (item) => {
 
-        console.log(item);
+        // console.log(item);
         setItemId(item);
         modalRef.current.showModal();
 
@@ -237,9 +237,8 @@ const DeliveryList = () => {
 
                                     <td className="text-right space-y-4 flex flex-col lg:my-3">
 
-
-                                        <button onClick={() => handleDeliverItem(item)}
-                                            className="bg-green-300 lg:px-7 px-2 py-2 text-xs rounded-md">Deliver
+                                        <button onClick={() => handleViewLocation(item)}
+                                            className="bg-amber-400 p-2 text-xs rounded-md">View Location
 
                                         </button>
 
@@ -249,12 +248,11 @@ const DeliveryList = () => {
 
                                         </button>
 
-                                        <button onClick={() => handleViewLocation(item)}
-                                            className="bg-amber-400 p-2 text-xs rounded-md">View Location
+
+                                        <button onClick={() => handleDeliverItem(item)}
+                                            className="bg-green-300 lg:px-7 px-2 py-2 text-xs rounded-md">Deliver
 
                                         </button>
-
-
 
                                     </td>
 
@@ -293,7 +291,7 @@ const DeliveryList = () => {
                 </dialog>
 
 
-                
+
             </div>
 
         </div>

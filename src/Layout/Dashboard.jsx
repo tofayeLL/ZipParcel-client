@@ -1,6 +1,11 @@
-import { FaBook, FaHome } from "react-icons/fa";
+import { FaBox, FaHome, FaListUl, FaUsersCog } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useUserRole from "../hooks/useUserRole";
+
+import { MdLibraryAddCheck, MdRateReview, MdTransferWithinAStation } from "react-icons/md";
+import { IoStatsChart } from "react-icons/io5";
+import { FaBoxArchive } from "react-icons/fa6";
+import { CgProfile } from "react-icons/cg";
 
 
 const Dashboard = () => {
@@ -40,16 +45,16 @@ const Dashboard = () => {
                         {
                             admin && <>
                                 <li>
-                                    <NavLink to={'/dashboard/allParcel'}><span><FaBook></FaBook> </span>All Parcels</NavLink>
+                                    <NavLink to={'/dashboard/allParcel'}><span className="text-base"><FaBox></FaBox > </span>All Parcels</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/dashboard/allUsers'}><span><FaBook></FaBook> </span>All Users</NavLink>
+                                    <NavLink to={'/dashboard/allUsers'}><span className="text-lg"><FaUsersCog></FaUsersCog > </span>All Users</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/dashboard/allDeliveryMen'}><span><FaBook></FaBook> </span>All Delivery Men</NavLink>
+                                    <NavLink to={'/dashboard/allDeliveryMen'}><span className="text-lg"><MdTransferWithinAStation></MdTransferWithinAStation > </span>All Delivery Men</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/dashboard/statistics'}><span><FaBook></FaBook> </span>Statistics</NavLink>
+                                    <NavLink to={'/dashboard/statistics'}><span className="text-lg"><IoStatsChart></IoStatsChart> </span>Statistics</NavLink>
                                 </li>
                             </>
                         }
@@ -61,13 +66,13 @@ const Dashboard = () => {
                             user && <>
 
                                 <li  >
-                                    <NavLink to={'/dashboard/bookParcel'}><span><FaBook></FaBook> </span>Book a Parcel</NavLink>
+                                    <NavLink to={'/dashboard/bookParcel'}><span className="text-lg"><MdLibraryAddCheck ></MdLibraryAddCheck > </span>Book a Parcel</NavLink>
                                 </li>
                                 <li >
-                                    <NavLink to={'/dashboard/myParcel'}><span><FaBook></FaBook> </span>My Parcels</NavLink>
+                                    <NavLink to={'/dashboard/myParcel'}><span className="text-lg"><FaBoxArchive ></FaBoxArchive > </span>My Parcels</NavLink>
                                 </li>
                                 <li >
-                                    <NavLink to={'/dashboard/myProfile'}><span><FaBook></FaBook> </span>My Profile</NavLink>
+                                    <NavLink to={'/dashboard/myProfile'}><span className="text-lg"><CgProfile></CgProfile > </span>My Profile</NavLink>
                                 </li>
                             </>
 
@@ -79,18 +84,14 @@ const Dashboard = () => {
                             deliveryMen && <>
 
                                 <li >
-                                    <NavLink to={'/dashboard/deliveryList'}><span><FaBook></FaBook> </span>My Delivery List</NavLink>
+                                    <NavLink to={'/dashboard/deliveryList'}><span ><FaListUl></FaListUl > </span>My Delivery List</NavLink>
                                 </li>
                                 <li >
-                                    <NavLink to={'/dashboard/myReviews'}><span><FaBook></FaBook> </span>My Reviews</NavLink>
+                                    <NavLink to={'/dashboard/myReviews'}><span className="text-lg"><MdRateReview></MdRateReview > </span>My Reviews</NavLink>
                                 </li>
                             </>
 
                         }
-
-
-
-
 
 
 
@@ -104,7 +105,7 @@ const Dashboard = () => {
 
 
                         <li>
-                            <NavLink to={'/'}><span> <FaHome></FaHome></span>Home</NavLink>
+                            <NavLink to={'/'}><span> <FaHome className="text-lg"></FaHome></span>Home</NavLink>
                         </li>
 
 
