@@ -63,7 +63,7 @@ Welcome to ZipParcel, your go-to platform for all your parcel delivery needs. Wh
 - **Social Media Integration**
   - Stay connected through our social media channels.
 
-  ### Technology Used Client Side
+### Technology Used Client Side
 - Tailwind CSS
 - DaisyUI & Mamba UI
 - React router dom
