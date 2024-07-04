@@ -63,6 +63,30 @@ Welcome to ZipParcel, your go-to platform for all your parcel delivery needs. Wh
 - **Social Media Integration**
   - Stay connected through our social media channels.
 
+  ### Technology Used Client Side
+- Tailwind CSS
+- DaisyUI & Mamba UI
+- React router dom
+- React icons
+- React loader spinner
+- Prop types
+- Sweetalert2
+- React toastify
+- Firebase
+
+### Technologies Used Server Side
+- Node Js
+- Express Js
+- MongoDB
+
+### After Clone Project Uses Guideline
+- Step 1: Copy the Repository Link.
+- Step 2: Open VS Code and Navigate to Your Desired Folder.
+- Step 3: Clone the Repository.
+- Step 5: Install Dependencies(npm install).
+- Step 6: Start the Project (npm run dev).
+
+
 Explore ZipParcel: [Visit Website](https://zipparcel-client.web.app)
 
 - **Website Authorization**
